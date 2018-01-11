@@ -44,10 +44,6 @@ public class PartnerMockFrameworkConfig {
 			@Value("${wss-partner-mock-framework.db4oFile.clientServerMode:true}") final Boolean clientServerMode,
 			@Value("${wss-partner-mock-framework.db4oFile.port:9523}") final int port) {
 
-		System.out.println("[######] ${wss-partner-mock-framework.db4oFile:} == " + db4oFile);
-		System.out.println("[######] ${wss-partner-mock-framework.db4oFile.clientServerMode:true} == " + clientServerMode);
-		System.out.println("[######] ${wss-partner-mock-framework.db4oFile.port:9523} == " + port);
-
 		final Db4oDatabase db4oDatabase = new Db4oDatabase();
 		if ((db4oFile == null) || StringUtils.isEmpty(db4oFile.trim())) {
 			db4oDatabase.setDb4oFile("partnerMockDb_" + port + ".db4o");

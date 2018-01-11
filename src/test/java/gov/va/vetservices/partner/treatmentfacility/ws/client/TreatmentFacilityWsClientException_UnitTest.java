@@ -24,7 +24,6 @@ public class TreatmentFacilityWsClientException_UnitTest {
 
 	@Test
 	public void testExceptionConstructor_NoMessage_NoCause() {
-		System.out.println("###### testExceptionConstructor_NoMessage_NoCause() executing ...");
 		// assertions for constructor that doesn't take a message or a cause
 		final TreatmentFacilityWsClientException exception_NoMessage_NoCause = new TreatmentFacilityWsClientException();
 		final String message = parseMessageFromExceptionMessage(exception_NoMessage_NoCause.getMessage());
@@ -45,13 +44,10 @@ public class TreatmentFacilityWsClientException_UnitTest {
 
 	@Test
 	public void testExceptionConstructor_NoMessage_YesCause() {
-		System.out.println("###### testExceptionConstructor_NoMessage_YesCause() executing ...");
 		// assertions for constructor that doesn't take a message but does a cause
 		final TreatmentFacilityWsClientException exception_NoMessage_YesCause =
 				new TreatmentFacilityWsClientException(RUNTIME_EXCEPTION);
 		final String message = parseMessageFromExceptionMessage(exception_NoMessage_YesCause.getMessage());
-		System.out.println("###### testExceptionConstructor_NoMessage_YesCause() message:[" + message + "]");
-		System.out.println("###### testExceptionConstructor_NoMessage_YesCause() cause:[" + exception_NoMessage_YesCause.getCause() + "]");
 		assertNull(message);
 		assertEquals(RUNTIME_EXCEPTION, exception_NoMessage_YesCause.getCause());
 	}
