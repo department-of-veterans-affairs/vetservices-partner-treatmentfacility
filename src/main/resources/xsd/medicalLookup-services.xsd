@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. 
+	RI's version is Oracle JAX-WS 2.1.3-07/10/2008 08:41 PM(bt). -->
+<xs:schema xmlns:tns="http://gov.va.vba.benefits.vdc/services"
+	xmlns:ns2="http://gov.va.vba.benefits.vdc/webfault" xmlns:ns1="http://gov.va.vba.benefits.vdc/data"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0"
+	targetNamespace="http://gov.va.vba.benefits.vdc/services">
+
+	<xs:import namespace="http://gov.va.vba.benefits.vdc/data" schemaLocation="./medicalLookup-data.xsd" /> 
+	<!-- <xs:element name="getVAMedicalTreatmentFacilityList" type="tns:getVAMedicalTreatmentFacilityList" 
+		/> <xs:element name="getVAMedicalTreatmentFacilityListResponse" type="tns:getVAMedicalTreatmentFacilityListResponse" 
+		/> -->
+	<xs:element name="getVAMedicalTreatmentFacilityList">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="StateCd" type="xs:string" minOccurs="0" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="getVAMedicalTreatmentFacilityListResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ns1:MedicalTreatmentFacilityListReturn"
+					minOccurs="0" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="medicalTreatmentFacilityListReturnVO">
+		<xs:sequence>
+			<xs:element name="MedicalTreatmentFacilityList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ns1:MedicalTreatmentFacility"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="medicalTreatmentFacilityReturnVO">
+		<xs:sequence>
+			<xs:element name="addressEndDt" type="xs:dateTime"
+				minOccurs="0" />
+			<xs:element name="cityNm" type="xs:string" />
+			<xs:element name="facilityNm" type="xs:string" />
+			<xs:element name="postalCd" type="xs:string" />
+			<xs:element name="ptcpntId" type="xs:long" />
+		</xs:sequence>
+	</xs:complexType>
+	<!-- <xs:complexType name="DataValidationFault"> <xs:sequence> <xs:element 
+		name="error" type="tns:dataValidationFaultBean" minOccurs="0" /> <xs:element 
+		name="errorCode" type="xs:string" minOccurs="0" /> <xs:element name="errorMessage" 
+		type="xs:string" minOccurs="0" /> <xs:element name="message" type="xs:string" 
+		minOccurs="0" /> </xs:sequence> </xs:complexType> <xs:complexType name="dataValidationFaultBean"> 
+		<xs:sequence> <xs:element name="code" type="xs:string" minOccurs="0" /> <xs:element 
+		name="message" type="xs:string" minOccurs="0" /> </xs:sequence> </xs:complexType> 
+		<xs:complexType name="MessageFault"> <xs:sequence> <xs:element name="error" 
+		type="tns:messageFaultBean" minOccurs="0" /> <xs:element name="errorCode" 
+		type="xs:string" minOccurs="0" /> <xs:element name="errorMessage" type="xs:string" 
+		minOccurs="0" /> <xs:element name="message" type="xs:string" minOccurs="0" 
+		/> </xs:sequence> </xs:complexType> <xs:complexType name="messageFaultBean"> 
+		<xs:sequence> <xs:element name="code" type="xs:string" minOccurs="0" /> <xs:element 
+		name="message" type="xs:string" minOccurs="0" /> </xs:sequence> </xs:complexType> -->
+</xs:schema>

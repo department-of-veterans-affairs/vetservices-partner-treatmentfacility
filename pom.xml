@@ -1,0 +1,204 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>gov.va.ascent</groupId>
+		<artifactId>ascent-platform-parent</artifactId>
+		<version>0.0.2-SNAPSHOT</version>
+		<relativePath />
+	</parent>
+
+	<groupId>gov.va.vetservices.partner</groupId>
+	<artifactId>vetservices-partner-treatmentfacility</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>${project.artifactId}</name>
+	<description>VetServices Medical Treatment Facility partner client		</description>
+
+	<packaging>jar</packaging>
+
+	<properties>
+		<!-- expression language -->
+		<org.glassfish.web.version>2.2</org.glassfish.web.version>
+		<!-- system properties -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<!-- Docker properties to add min and max memory for spring boot jar start up -->
+		<docker.java.opts.ms>-Xms64m</docker.java.opts.ms>
+		<docker.java.opts.mx>-Xmx256m</docker.java.opts.mx>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>gov.va.ascent</groupId>
+			<artifactId>ascent-platform-starter</artifactId>
+			<!-- version>0.0.1-SNAPSHOT</version -->
+		</dependency>
+		<dependency>
+			<groupId>gov.va.ascent</groupId>
+			<artifactId>ascent-framework</artifactId>
+		</dependency>
+
+		<!-- spring framework project dependencies -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.ws</groupId>
+			<artifactId>spring-ws-core</artifactId>
+		</dependency>
+
+		<!-- JSR 303 validation dependencies -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+		</dependency>
+
+		<!-- AspectJ weaver project dependencies -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjtools</artifactId>
+		</dependency>
+
+		<!-- Hibernate Validator project dependencies -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+		</dependency>
+
+		<!-- Expression Language Implementation dependencies -->
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>el-impl</artifactId>
+			<version>${org.glassfish.web.version}</version>
+		</dependency>
+
+		<!-- Apache Commons project dependencies -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+
+		<!-- Logging library dependencies -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+
+		<!-- Test Dependencies -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+
+		<plugins>
+			<!-- repackages jar and war plugins so they can be executed with command line -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<!-- commented for now, not sure if this plugin will be used -->
+			<!-- <plugin>
+				<groupId>eviware</groupId>
+				<artifactId>maven-soapui-plugin</artifactId>
+				<version>4.5.1</version>
+				<executions>
+				<execution>
+				<id>soapUIMockStartup</id>
+				<phase>process-test-classes</phase>
+				<goals>
+				<goal>mock</goal>
+				</goals>
+				<configuration>
+				<projectFile>${basedir}/src/test/resources/ascent-demo-partner-soapui-project.xml</projectFile>
+				<noBlock>true</noBlock>
+				</configuration>
+				</execution>
+				</executions>
+				</plugin>
+			-->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>1.5</version>
+				<configuration>
+					<bindingDirectory>${project.basedir}/src/main/resources/xsd</bindingDirectory>
+					<extension>true</extension>
+					<schemaIncludes>
+						<schemaInclude>**/*.xsd</schemaInclude>
+					</schemaIncludes>
+					<quiet>true</quiet>
+					<verbose>false</verbose>
+					<clearOutputDir>false</clearOutputDir>
+					<arguments>-mark-generated</arguments>
+				</configuration>
+				<executions>
+					<execution>
+						<id>xjc-treatmentfacility</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+						<configuration>
+							<schemaDirectory>${project.basedir}/src/main/resources/xsd</schemaDirectory>
+							<packageName>gov.va.vetservices.partner.treatmentfacility.ws.client.transfer</packageName>
+							<staleFile>${project.build.directory}/generated-sources/.jaxb-staleFlag-TreatmentFacility</staleFile>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+
+		<pluginManagement>
+			<plugins>
+				<!-- commented for now, not sure if this plugin will be used -->
+				<!-- <plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+					<lifecycleMappingMetadata>
+					<pluginExecutions>
+					<pluginExecution>
+					<pluginExecutionFilter>
+					<groupId>eviware</groupId>
+					<artifactId>
+					maven-soapui-plugin
+					</artifactId>
+					<versionRange>
+					[4.5.1,)
+					</versionRange>
+					<goals>
+					<goal>mock</goal>
+					</goals>
+					</pluginExecutionFilter>
+					<action>
+					<ignore />
+					</action>
+					</pluginExecution>
+					</pluginExecutions>
+					</lifecycleMappingMetadata>
+					</configuration>
+					</plugin> -->
+			</plugins>
+		</pluginManagement>
+
+	</build>
+
+</project>
