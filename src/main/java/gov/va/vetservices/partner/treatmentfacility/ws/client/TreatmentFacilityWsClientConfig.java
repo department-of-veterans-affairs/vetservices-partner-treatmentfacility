@@ -184,7 +184,7 @@ public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 		// CHECKSTYLE:ON
 		final InterceptingExceptionTranslator interceptingExceptionTranslator =
 				getInterceptingExceptionTranslator(DEFAULT_EXCEPTION_CLASS, PACKAGE_WSS_FOUNDATION_EXCEPTION);
-		final Set<String> exclusionSet = new HashSet<String>();
+		final Set<String> exclusionSet = new HashSet<>();
 		exclusionSet.add(PACKAGE_WSS_FOUNDATION_EXCEPTION);
 		exclusionSet.add(EXCLUDE_EXCEPTION_PKG);
 		interceptingExceptionTranslator.setExclusionSet(exclusionSet);
@@ -229,7 +229,7 @@ public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 	@Bean
 	WsClientSimulatorMarshallingInterceptor medicalTreatmentFacilityWsClientSimulatorMarshallingInterceptor() {
 		// CHECKSTYLE:ON
-		final Map<String, Jaxb2Marshaller> marshallerForPackageMap = new HashMap<String, Jaxb2Marshaller>();
+		final Map<String, Jaxb2Marshaller> marshallerForPackageMap = new HashMap<>();
 		marshallerForPackageMap.put(TRANSFER_PACKAGE, medicalTreatmentFacilityMarshaller());
 
 		return new WsClientSimulatorMarshallingInterceptor(marshallerForPackageMap);

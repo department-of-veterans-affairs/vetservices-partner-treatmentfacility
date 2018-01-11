@@ -6,6 +6,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * The base class for Web Service client simulations, containing utility operations, etc. that are likely reusable
  * across such simulators.
@@ -13,6 +16,9 @@ import java.io.InputStream;
  * @author jshrader
  */
 public class PartnerBaseWsClientSimulator {
+
+	/** logger */
+	private static final Logger LOGGER = LoggerFactory.getLogger(PartnerBaseWsClientSimulator.class);
 
 	/**
 	 * This is not an abstract class, however it is a base class that is not to be instantiated. In this case, it's
@@ -59,7 +65,12 @@ public class PartnerBaseWsClientSimulator {
 		try {
 			content = getSimulatorResponseByFileName(fileName1);
 		} catch (final IOException ex) {
-			content = getSimulatorResponseByFileName(fileName2);
+			LOGGER.info("Could not read from simulator response file 1 at resource1 \"" + fileName1 + "\". Trying resource2 \"" + fileName2 + "\"");
+			try {
+				content = getSimulatorResponseByFileName(fileName2);
+			} catch (final IOException ex2) {
+				throw new IOException("Failed to read from simulator response files 1 & 2 at resource1 \"" + fileName1 + "\" and resource1 \"" + fileName1 + "\"", ex2);
+			}
 		}
 
 		return content;
