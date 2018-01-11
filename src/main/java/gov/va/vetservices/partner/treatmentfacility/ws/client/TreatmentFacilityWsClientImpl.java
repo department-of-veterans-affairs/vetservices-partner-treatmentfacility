@@ -28,18 +28,18 @@ import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedi
 	TreatmentFacilityWsClient.PROFILE_TREATMENT_FACILITY_WSCLIENT_REMOTE_CLIENT_IMPL})
 public class TreatmentFacilityWsClientImpl extends BaseWsClientImpl implements TreatmentFacilityWsClient {
 
+	/** The Constant BEAN_NAME. */
+	public static final String BEAN_NAME = "treatmentFacilityWsClientImpl";
+
+	/** The Constant LOGGER. */
+	private static final Logger LOGGER = LoggerFactory.getLogger(TreatmentFacilityWsClientImpl.class);
+
 	/**
 	 * axiom web service template for medicalTreatmentFacility service
 	 */
 	@Autowired
 	@Qualifier("treatmentFacilityWsClient.axiom")
 	private WebServiceTemplate treatmentFacilityWsTemplate;
-
-	/** The Constant BEAN_NAME. */
-	public static final String BEAN_NAME = "treatmentFacilityWsClientImpl";
-
-	/** The Constant LOGGER. */
-	private static final Logger LOGGER = LoggerFactory.getLogger(TreatmentFacilityWsClientImpl.class);
 
 	/**
 	 * Executed after dependency injection is done to validate initialization.
@@ -50,8 +50,10 @@ public class TreatmentFacilityWsClientImpl extends BaseWsClientImpl implements T
 				"axiomWebServiceTemplate cannot be null in order for TreatmentWsClientImpl to work properly.");
 	}
 
-
-
+	/**
+	 * Get a list of medical treatment facilities from the partner
+	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public final GetVAMedicalTreatmentFacilityListResponse getVAMedicalTreatmentFacilityList(
 			final GetVAMedicalTreatmentFacilityList request) {

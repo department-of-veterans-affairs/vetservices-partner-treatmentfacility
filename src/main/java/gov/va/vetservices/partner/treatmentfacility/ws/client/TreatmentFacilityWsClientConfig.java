@@ -35,31 +35,35 @@ import gov.va.ascent.framework.ws.client.WsClientSimulatorMarshallingInterceptor
  * @author vgadda
  */
 @Configuration
-@ComponentScan(basePackages = {"gov.va.vetservices.partner.medicaltreatmentfacility.ws.client" },
+@ComponentScan(basePackages = {"gov.va.vetservices.partner.treatmentfacility.ws.client" },
 excludeFilters = @Filter(Configuration.class))
+@SuppressWarnings("PMD.ExcessiveImports")
 public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 
 	/**
 	 * Transfer Package Constant.
 	 */
-	private static final String TRANSFER_PACKAGE = "gov.va.vetservices.partner.medicaltreatmentfacility.ws.transfer";
+	private static final String TRANSFER_PACKAGE = "gov.va.vetservices.partner.treatmentfacility.ws.client.transfer";
 
 	/**
 	 * Exception class for exception interceptor
 	 */
 	private static final String DEFAULT_EXCEPTION_CLASS =
-			"gov.va.vetservices.partner.medicaltreatmentfacility.ws.client.MedicalTreatmentFacilityWsClientException";
+			"gov.va.vetservices.partner.treatmentfacility.ws.client.TreatmentFacilityWsClientException";
 
 	/**
 	 * exclude package for exception interceptor
 	 */
-	private static final String EXCLUDE_EXCEPTION_PKG = "gov.va.vetservices.partner.medicaltreatmentfacility.ws.client";
+	private static final String EXCLUDE_EXCEPTION_PKG = "gov.va.vetservices.partner.treatmentfacility.ws.client";
+
+	// ####### values are from /resource/config/*.properties ######
 	/**
 	 * Boolean flag to indicate if we should log the JAXB error as an error nor debug. In the test environment we get so many errors we
 	 * don't want to polute logs, however in prod data is expected to be cleaner, logs less polluted and we may want these logged.
 	 */
-	@Value("${wss-partner-medicaltreatmentfacility.ws.client.logSchemaValidationFailureAsError:true}")
-	private boolean logSchemaValidationFailureAsError;
+	/** ISSUE using @Value does not parse the boolean for reasons unknown */
+	//	@Value("${wss-partner-medicaltreatmentfacility.ws.client.logSchemaValidationFailureAsError:true}")
+	private final boolean logSchemaValidationFailureAsError = true;
 
 	/**
 	 * Username for medicaltreatmentfacility WS Authentication.

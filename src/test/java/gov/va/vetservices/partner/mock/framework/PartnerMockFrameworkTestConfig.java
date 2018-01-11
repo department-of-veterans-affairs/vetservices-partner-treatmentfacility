@@ -22,6 +22,12 @@ import gov.va.ascent.framework.config.BasePropertiesConfig;
 public class PartnerMockFrameworkTestConfig extends BasePropertiesConfig
 {
 
+	/** ISSUE
+	 * The code below was originally in PartnerMockFrameworkTestPropertiesConfig (as in demo-partner)
+	 * However, the class refused to be @Import-ed and caused failure to load properties.
+	 * Putting the config here solved the problem, and also simplifies the config (one less spring class)
+	 */
+
 	/** The Constant APP_NAME. */
 	public static final String APP_NAME = "wss-partner-mock-framework-test";
 

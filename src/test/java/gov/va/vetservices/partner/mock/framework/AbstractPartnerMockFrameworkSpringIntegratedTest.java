@@ -15,6 +15,7 @@ import gov.va.ascent.framework.config.AscentCommonSpringProfiles;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles(AscentCommonSpringProfiles.PROFILE_REMOTE_CLIENT_SIMULATORS)
 @ContextConfiguration(inheritLocations = false, classes = { PartnerMockFrameworkConfig.class })
+/** ISSUE removed following from @ContextConfiguration because this causes property loading failure: , PartnerMockFrameworkConfig.class */
 public abstract class AbstractPartnerMockFrameworkSpringIntegratedTest {
 
 }

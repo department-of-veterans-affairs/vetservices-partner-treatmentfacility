@@ -3,6 +3,7 @@ package gov.va.vetservices.partner.treatmentfacility.ws.client;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
+import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
 
 import gov.va.ascent.framework.exception.AscentRuntimeException;
@@ -23,9 +24,11 @@ public class TreatmentFacilityWsClientException_UnitTest {
 
 	@Test
 	public void testExceptionConstructor_NoMessage_NoCause() {
+		System.out.println("###### testExceptionConstructor_NoMessage_NoCause() executing ...");
 		// assertions for constructor that doesn't take a message or a cause
 		final TreatmentFacilityWsClientException exception_NoMessage_NoCause = new TreatmentFacilityWsClientException();
-		assertNull(exception_NoMessage_NoCause.getMessage());
+		final String message = parseMessageFromExceptionMessage(exception_NoMessage_NoCause.getMessage());
+		assertNull(message);
 		assertNull(exception_NoMessage_NoCause.getCause());
 
 	}
@@ -42,10 +45,14 @@ public class TreatmentFacilityWsClientException_UnitTest {
 
 	@Test
 	public void testExceptionConstructor_NoMessage_YesCause() {
+		System.out.println("###### testExceptionConstructor_NoMessage_YesCause() executing ...");
 		// assertions for constructor that doesn't take a message but does a cause
 		final TreatmentFacilityWsClientException exception_NoMessage_YesCause =
 				new TreatmentFacilityWsClientException(RUNTIME_EXCEPTION);
-		assertNull(exception_NoMessage_YesCause.getMessage());
+		final String message = parseMessageFromExceptionMessage(exception_NoMessage_YesCause.getMessage());
+		System.out.println("###### testExceptionConstructor_NoMessage_YesCause() message:[" + message + "]");
+		System.out.println("###### testExceptionConstructor_NoMessage_YesCause() cause:[" + exception_NoMessage_YesCause.getCause() + "]");
+		assertNull(message);
 		assertEquals(RUNTIME_EXCEPTION, exception_NoMessage_YesCause.getCause());
 	}
 
@@ -56,5 +63,19 @@ public class TreatmentFacilityWsClientException_UnitTest {
 				new TreatmentFacilityWsClientException(EXCEPTION_MESSAGE, RUNTIME_EXCEPTION);
 		assertEquals(EXCEPTION_MESSAGE, exception_YesMessage_YesCause.getMessage());
 		assertEquals(RUNTIME_EXCEPTION, exception_YesMessage_YesCause.getCause());
+	}
+
+	/**
+	 * Parse off the exception classname that gets added by some subclass, and return just the message
+	 *
+	 * @param message
+	 * @return
+	 */
+	private String parseMessageFromExceptionMessage(final String message) {
+		String tmp = StringUtils.substringAfter(message, ":");
+		if((tmp != null) && (tmp.trim().length() < 1)) {
+			tmp = null;
+		}
+		return tmp;
 	}
 }

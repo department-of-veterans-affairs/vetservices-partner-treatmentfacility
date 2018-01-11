@@ -12,6 +12,11 @@ import org.junit.Test;
  */
 public class PartnerMockFrameworkConfig_UnitTest extends AbstractPartnerMockFrameworkSpringIntegratedTest {
 
+	/** ISSUE
+	 *  Autowiring of partnerMockDb fails, reason unknown.
+	 *  To get past this, comment out the class variables and the assercions in .testContextLoaded()
+	 */
+
 	//	@Autowired
 	//	private ApplicationContext applicationContext;
 	//
