@@ -10,15 +10,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import gov.va.ascent.framework.config.AscentCommonSpringProfiles;
+import gov.va.vetservices.partner.mock.framework.PartnerMockFrameworkTestConfig;
 import junit.framework.TestCase;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles({ AscentCommonSpringProfiles.PROFILE_ENV_LOCAL_INT, AscentCommonSpringProfiles.PROFILE_REMOTE_CLIENT_SIMULATORS })
-/** ISSUE
- * Had to remove from @ContextConfiguration:  , PartnerMockFrameworkTestConfig.class })
- * For some reason, causes properties to not be loaded;.
- */
-@ContextConfiguration(inheritLocations = false, classes = { TreatmentFacilityWsClientConfig.class })
+@ContextConfiguration(inheritLocations = false, classes = { TreatmentFacilityWsClientConfig.class, PartnerMockFrameworkTestConfig.class })
 public class TreatmentFacilityWsClientSimulator_UnitTest extends TestCase {
 
 	@Autowired
