@@ -1,46 +1,88 @@
 package gov.va.vetservices.partner.treatmentfacility.ws.client;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
-import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
+import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
+import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
+import org.springframework.ws.client.core.WebServiceTemplate;
 
 import gov.va.ascent.framework.config.AscentCommonSpringProfiles;
-import gov.va.vetservices.partner.mock.framework.PartnerMockFrameworkTestConfig;
+import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedicalTreatmentFacilityList;
+import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedicalTreatmentFacilityListResponse;
+import gov.va.vetservices.partner.treatmentfacility.ws.remote.RemoteServiceCallMock;
+import gov.va.vetservices.partner.ws.remote.RemoteServiceCall;
 
 /**
- * Unit test of PersonWsClientImpl.
+ * <p>
+ * Tests the webservice implementation. Note specifically the @ActiveProfiles
+ * and @ContextConfiguration.
+ * </p>
+ * <p>
+ * To engage mocking capabilities, @ActiveProfiles must specify the simulator
+ * profile. {@link RemoteServiceCallMock} declares itself as the mocking
+ * implementation for the simulator profile.
+ * </p>
+ * <p>
+ * MockitoJUnitRunner class cannot be used to @RunWith because the application
+ * context must Autowire the WebServiceTemplate from the client implementation.
+ * </p>
+ *
+ * @author aburkholder
  */
-// ignored for now as its integration test and requires SOAP UI to be running
-@Ignore
 @RunWith(SpringJUnit4ClassRunner.class)
-@ActiveProfiles({ AscentCommonSpringProfiles.PROFILE_ENV_LOCAL_INT, AscentCommonSpringProfiles.PROFILE_REMOTE_CLIENT_IMPLS })
-@ContextConfiguration(inheritLocations = false,
-classes = { TreatmentFacilityWsClientConfig.class, PartnerMockFrameworkTestConfig.class })
+@TestExecutionListeners(inheritListeners = false, listeners = { DependencyInjectionTestExecutionListener.class,
+		DirtiesContextTestExecutionListener.class, TransactionalTestExecutionListener.class })
+@ActiveProfiles({ AscentCommonSpringProfiles.PROFILE_REMOTE_CLIENT_SIMULATORS })
+@ContextConfiguration(inheritLocations = false, classes = { PartnerMockFrameworkTestConfig.class,
+		TreatmentFacilityWsClientConfig.class })
 public class TreatmentFacilityWsClientImpl_UnitTest {
 
+	private final static String TEST_STATE_CODE = "VA";
+
 	@Autowired
-	TreatmentFacilityWsClient treatmentFacilityWsClient;
+	RemoteServiceCall callPartnerService;
 
-
+	@Autowired
+	@Qualifier("treatmentFacilityWsClient.axiom")
+	private WebServiceTemplate axiomWebServiceTemplate;
 
 	@Before
 	public void setUp() {
-	}
-
-	@After
-	public void clear() {
+		assertNotNull("FAIL axiomWebServiceTemplate cannot be null.", axiomWebServiceTemplate);
+		assertNotNull("FAIL callPartnerService cannot be null.", callPartnerService);
 	}
 
 	@Test
 	public void testGetVAMedicalTreatmentFacilityList() {
-		assertNotNull(treatmentFacilityWsClient);
+
+		// call the impl declared by the current @ActiveProfiles
+		final GetVAMedicalTreatmentFacilityListResponse response = (GetVAMedicalTreatmentFacilityListResponse) callPartnerService
+				.callRemoteService(axiomWebServiceTemplate, makeRequest(), GetVAMedicalTreatmentFacilityList.class);
+
+		assertNotNull(response);
+		assertNotNull(response.getMedicalTreatmentFacilityListReturn());
+		assertNotNull(response.getMedicalTreatmentFacilityListReturn().getMedicalTreatmentFacilityList());
+		assertNotNull(response.getMedicalTreatmentFacilityListReturn().getMedicalTreatmentFacilityList()
+				.getMedicalTreatmentFacility());
+
+		assertTrue(response.getMedicalTreatmentFacilityListReturn().getMedicalTreatmentFacilityList()
+				.getMedicalTreatmentFacility().size() == 3);
+	}
+
+	private GetVAMedicalTreatmentFacilityList makeRequest() {
+		final GetVAMedicalTreatmentFacilityList request = new GetVAMedicalTreatmentFacilityList();
+		request.setStateCd(TEST_STATE_CODE);
+		return request;
 	}
 }

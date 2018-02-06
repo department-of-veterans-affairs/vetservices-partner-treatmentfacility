@@ -4,9 +4,8 @@ import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedi
 import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedicalTreatmentFacilityListResponse;
 
 /**
- * This interface contains the operations in the remote MedicalTreatmentFacility
- * web service necessary to be implemented in a client capable of communicating
- * with the MedicalTreatmentFacility service
+ * This interface contains the TreatmentFacility operations in the remote MedicalTreatmentFacility
+ * web service
  *
  * @author vgadda
  *
@@ -18,22 +17,17 @@ import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedi
 public interface TreatmentFacilityWsClient {
 
 	/**
-	 * Spring profile for MedicalTreatmentFacility wsclient remote client
+	 * Spring profile for TreatmentFacility wsclient remote client
 	 * implementation.
 	 */
-	String PROFILE_TREATMENT_FACILITY_WSCLIENT_REMOTE_CLIENT_IMPL = "medicaltreatmentfacility_wsclient_remote_client_impl";
+	String PROFILE_TREATMENT_FACILITY_WSCLIENT_REMOTE_CLIENT_IMPL = "treatmentfacility_wsclient_remote_client_impl";
 
 	/**
-	 * Spring profile for MedicalTreatmentFacility wsclient remote client
-	 * simulator.
-	 */
-	String PROFILE_TREATMENT_FACILITY_WSCLIENT_REMOTE_CLIENT_SIM = "medicaltreatmentfacility_wsclient_remote_client_sim";
-
-	/**
-	 * @param request The MedicalTreatmentFacility Web Service to find treatment facilities
-	 * @return GetVAMedicalTreatmentFacilityListResponse The MedicalTreatmentFacility Web Service  response entity
+	 * Get the TreatmentFacilityList from the remote MedicalTreatmentFacility Web Service.
+	 * @param request The remote request entity to find treatment facilities
+	 * @return GetVAMedicalTreatmentFacilityListResponse The remote response entity
 	 */
 
-	GetVAMedicalTreatmentFacilityListResponse getVAMedicalTreatmentFacilityList(
+	GetVAMedicalTreatmentFacilityListResponse getTreatmentFacilityList(
 			final GetVAMedicalTreatmentFacilityList request);
 }

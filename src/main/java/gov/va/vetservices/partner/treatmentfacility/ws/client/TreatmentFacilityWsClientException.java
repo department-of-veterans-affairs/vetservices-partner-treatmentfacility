@@ -4,7 +4,7 @@ import gov.va.ascent.framework.exception.AscentRuntimeException;
 
 /**
  * Root hierarchy of exceptions which indicates there was an exception/error in
- * the MedicalTreatmentFacility web service
+ * the TreatmentFacility web service
  *
  * @author vgadda
  */

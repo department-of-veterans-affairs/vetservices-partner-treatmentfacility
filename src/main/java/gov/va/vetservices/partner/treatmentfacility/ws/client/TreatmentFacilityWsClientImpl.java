@@ -6,37 +6,31 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.ws.client.core.WebServiceTemplate;
 
-import gov.va.ascent.framework.config.AscentCommonSpringProfiles;
 import gov.va.ascent.framework.util.Defense;
 import gov.va.ascent.framework.ws.client.BaseWsClientImpl;
 import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedicalTreatmentFacilityList;
 import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedicalTreatmentFacilityListResponse;
 
 /**
- * Spring Web Service based implementation of the MedicalTreatmentFacility
+ * Spring Web Service based implementation of the TreatmentFacility
  * interface
  *
  * @author vgadda
  *
  */
 @Component(TreatmentFacilityWsClientImpl.BEAN_NAME)
-@Profile({ AscentCommonSpringProfiles.PROFILE_REMOTE_CLIENT_IMPLS,
-	TreatmentFacilityWsClient.PROFILE_TREATMENT_FACILITY_WSCLIENT_REMOTE_CLIENT_IMPL})
 public class TreatmentFacilityWsClientImpl extends BaseWsClientImpl implements TreatmentFacilityWsClient {
 
 	/** The Constant BEAN_NAME. */
-	public static final String BEAN_NAME = "treatmentFacilityWsClientImpl";
+	public static final String BEAN_NAME = "treatmentFacilityWsClient";
 
 	/** The Constant LOGGER. */
 	private static final Logger LOGGER = LoggerFactory.getLogger(TreatmentFacilityWsClientImpl.class);
 
-	/**
-	 * axiom web service template for medicalTreatmentFacility service
-	 */
+	/** axiom web service template for treatmentFacility service */
 	@Autowired
 	@Qualifier("treatmentFacilityWsClient.axiom")
 	private WebServiceTemplate treatmentFacilityWsTemplate;
@@ -51,18 +45,19 @@ public class TreatmentFacilityWsClientImpl extends BaseWsClientImpl implements T
 	}
 
 	/**
-	 * Get a list of medical treatment facilities from the partner
+	 * Get a list of treatment facilities from the partner
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public final GetVAMedicalTreatmentFacilityListResponse getVAMedicalTreatmentFacilityList(
+	public final GetVAMedicalTreatmentFacilityListResponse getTreatmentFacilityList(
 			final GetVAMedicalTreatmentFacilityList request) {
 		Defense.notNull(request);
 
-		LOGGER.debug("Inside Get Medical Treatment Facility Client");
 		final GetVAMedicalTreatmentFacilityListResponse response = (GetVAMedicalTreatmentFacilityListResponse)
 				this.treatmentFacilityWsTemplate.marshalSendAndReceive(request);
+
 		Defense.notNull(response, RESPONSE_FROM_WEBSERVICE_CALL_NULL);
+
 		return response;
 	}
 

@@ -1,9 +1,6 @@
-package gov.va.vetservices.partner.mock.framework;
+package gov.va.vetservices.partner.treatmentfacility.ws.client;
 
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 
@@ -16,9 +13,7 @@ import gov.va.ascent.framework.config.BaseYamlConfig;
  * @author jshrader
  */
 @Configuration
-@Profile({ AscentCommonSpringProfiles.PROFILE_REMOTE_CLIENT_SIMULATORS })
-@ComponentScan(basePackages = "gov.va.vetservices.partner.mock.framework", excludeFilters = @Filter(Configuration.class))
-@Import({ PartnerMockFrameworkConfig.class })
+@Profile(AscentCommonSpringProfiles.PROFILE_REMOTE_CLIENT_SIMULATORS)
 public class PartnerMockFrameworkTestConfig extends BaseYamlConfig
 {
 

@@ -1,17 +1,21 @@
 #we need to use a unique port per ws-partner micro jar, convention is use 95## convention
 #using 9501 as the starting point, and we need to increment by 1 for each newly added jar
-#so count the number of wss-partner projects, if your project is #30 then your port would be 9530
-wss-partner-mock-framework.db4oFile.port: 9546
+#so count the number of vetservices-partner projects, if your project is #30 then your port would be 9530
+vetservices-partner-mock-framework.db4oFile.port: 9546
 
 #local endpoint for test that runs against SoapUI
 #we need to use a unique port per ws-partner micro jar, convention is use 97## convention
 #using 9701 as the starting point, and we need to increment by 1 for each newly added jar
-#so count the number of wss-partner projects, if your project is #30 then your port would be 9730
-#wss-partner-medicaltreatmentfacility.ws.client.endpoint=http://linktestbepbenefits.vba.va.gov:80/VDC/MedicalTreatmentFacilityLookupService
-wss-partner-medicaltreatmentfacility.ws.client.endpoint: http://localhost:9746/mockAddress
+#so count the number of vetservices-partner projects, if your project is #30 then your port would be 9730
+vetservices-partner-treatmentfacility.ws.client.endpoint: http://localhost:9746/mockAddress
 
-wss-partner-medicaltreatmentfacility.ws.client.username: unitTestUsername
-wss-partner-medicaltreatmentfacility.ws.client.password: unitTestPassword
-wss-partner-medicaltreatmentfacility.ws.client.vaApplicationName: unitTestAppName
+vetservices-partner-treatmentfacility.ws.client.username: unitTestUsername
+vetservices-partner-treatmentfacility.ws.client.password: unitTestPassword
+vetservices-partner-treatmentfacility.ws.client.vaApplicationName: unitTestAppName
 
 wss-persist.hibernateJpaConfig.packagesToScan: gov.va.evss.database.persist.domain
+
+vetservices-partner-treatmentfacility.ws.client.logSchemaValidationFailureAsError: true
+vetservices-partner-treatmentfacility.ws.client.readTimeout: 60000
+vetservices-partner-treatmentfacility.ws.client.connectionTimeout: 60000
+vetservices-partner-treatmentfacility.ws.client.methodWarningThreshhold: 2500
