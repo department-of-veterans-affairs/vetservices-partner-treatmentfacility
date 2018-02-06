@@ -130,9 +130,7 @@ public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 			// CHECKSTYLE:ON
 			@Value("${vetservices-partner-treatmentfacility.ws.client.endpoint}") final String endpoint,
 			@Value("${vetservices-partner-treatmentfacility.ws.client.readTimeout:60000}") final int readTimeout,
-			@Value("${vetservices-partner-treatmentfacility.ws.client.connectionTimeout:60000}") final int connectionTimeout)
-					throws KeyManagementException, UnrecoverableKeyException, NoSuchAlgorithmException, KeyStoreException,
-					CertificateException, IOException {
+			@Value("${vetservices-partner-treatmentfacility.ws.client.connectionTimeout:60000}") final int connectionTimeout) {
 
 		Defense.hasText(endpoint, "TreatmentFacilityWsClientAxiomTemplate endpoint cannot be empty.");
 		Defense.hasText(endpoint, "TreatmentFacilityWsClientAxiomTemplate readTimeout cannot be empty.");
@@ -200,8 +198,6 @@ public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 	BeanNameAutoProxyCreator treatmentFacilityWsClientBeanProxy() {
 		// CHECKSTYLE:ON
 		final String[] beanNames = { TreatmentFacilityWsClientImpl.BEAN_NAME }; // ,
-		// XJunk_TreatmentFacilityWsClientSimulator.BEAN_NAME
-		// };
 
 		// load each interceptor needed for the above beans.
 		final String[] interceptorNames = { "treatmentFacilityWsClientExceptionInterceptor",

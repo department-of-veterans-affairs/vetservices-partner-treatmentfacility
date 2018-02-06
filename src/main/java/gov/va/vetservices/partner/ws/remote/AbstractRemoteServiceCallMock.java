@@ -93,7 +93,7 @@ public abstract class AbstractRemoteServiceCallMock {
 
 		final Source requestPayload = marshalMockRequest((Jaxb2Marshaller) webserviceTemplate.getMarshaller(), request,
 				requestClass);
-		final Source responsePayload = readMockResponseByKey(request, requestClass);
+		final Source responsePayload = readMockResponseByKey(request);
 
 		mockSoapServer.expect(payload(requestPayload)).andRespond(withPayload(responsePayload));
 
@@ -134,7 +134,7 @@ public abstract class AbstractRemoteServiceCallMock {
 	 * @return
 	 * @throws IOException
 	 */
-	private ResourceSource readMockResponseByKey(final AbstractTransferObject request, final Class<?> requestClass) {
+	private ResourceSource readMockResponseByKey(final AbstractTransferObject request) {
 		// get the key from the calling class
 		final String key = getKeyForMockResponse(request);
 

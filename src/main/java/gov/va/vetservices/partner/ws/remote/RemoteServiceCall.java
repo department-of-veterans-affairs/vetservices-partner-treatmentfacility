@@ -8,6 +8,7 @@ import gov.va.ascent.framework.transfer.AbstractTransferObject;
  * Interface for executing remote service calls.
  * The implementation may be real, or may mock the call for testing. Mocking implementations of this interface should extend {@link AbstractRemoteServiceCallMock}.
  */
+@FunctionalInterface
 public interface RemoteServiceCall {
 
 	/** The spring bean name for any implementations. */
