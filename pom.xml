@@ -66,7 +66,6 @@
 			<groupId>org.springframework.ws</groupId>
 			<artifactId>spring-ws-test</artifactId>
 			<version>3.0.0.RELEASE</version>
-			<scope>test</scope>
 		</dependency>
 		<!-- for -->
 	</dependencies>

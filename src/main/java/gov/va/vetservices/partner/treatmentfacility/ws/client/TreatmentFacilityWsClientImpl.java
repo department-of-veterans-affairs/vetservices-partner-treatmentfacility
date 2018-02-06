@@ -2,8 +2,6 @@ package gov.va.vetservices.partner.treatmentfacility.ws.client;
 
 import javax.annotation.PostConstruct;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -27,9 +25,6 @@ public class TreatmentFacilityWsClientImpl extends BaseWsClientImpl implements T
 	/** The Constant BEAN_NAME. */
 	public static final String BEAN_NAME = "treatmentFacilityWsClient";
 
-	/** The Constant LOGGER. */
-	private static final Logger LOGGER = LoggerFactory.getLogger(TreatmentFacilityWsClientImpl.class);
-
 	/** axiom web service template for treatmentFacility service */
 	@Autowired
 	@Qualifier("treatmentFacilityWsClient.axiom")
@@ -47,7 +42,6 @@ public class TreatmentFacilityWsClientImpl extends BaseWsClientImpl implements T
 	/**
 	 * Get a list of treatment facilities from the partner
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public final GetVAMedicalTreatmentFacilityListResponse getTreatmentFacilityList(
 			final GetVAMedicalTreatmentFacilityList request) {

@@ -145,8 +145,8 @@ public abstract class AbstractRemoteServiceCallMock {
 		try {
 			resource = new ResourceSource(new ClassPathResource(MessageFormat.format(MOCK_FILENAME_TEMPLATE, key)));
 		} catch (final IOException e) {
-			throw new TreatmentFacilityWsClientException("Could not read mock XML file 'mocks/" + key
-					+ ".xml'. Please make sure this response file exists in the main/resources directory.", e);
+			throw new TreatmentFacilityWsClientException(("Could not read mock XML file 'mocks/" + key
+					+ ".xml'. Please make sure this response file exists in the main/resources directory."), e);
 		}
 		return resource;
 	}
