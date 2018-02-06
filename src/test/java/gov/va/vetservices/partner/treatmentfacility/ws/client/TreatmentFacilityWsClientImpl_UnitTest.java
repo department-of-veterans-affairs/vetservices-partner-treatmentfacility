@@ -1,6 +1,7 @@
 package gov.va.vetservices.partner.treatmentfacility.ws.client;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -48,7 +49,8 @@ import gov.va.vetservices.partner.ws.remote.RemoteServiceCall;
 		TreatmentFacilityWsClientConfig.class })
 public class TreatmentFacilityWsClientImpl_UnitTest {
 
-	private final static String TEST_STATE_CODE = "VA";
+	private final static String TEST_VALID_CODE = "VA";
+	private final static String TEST_BAD_CODE = "VAA";
 
 	@Autowired
 	RemoteServiceCall callPartnerService;
@@ -68,7 +70,7 @@ public class TreatmentFacilityWsClientImpl_UnitTest {
 
 		// call the impl declared by the current @ActiveProfiles
 		final GetVAMedicalTreatmentFacilityListResponse response = (GetVAMedicalTreatmentFacilityListResponse) callPartnerService
-				.callRemoteService(axiomWebServiceTemplate, makeRequest(), GetVAMedicalTreatmentFacilityList.class);
+				.callRemoteService(axiomWebServiceTemplate, makeRequest(TEST_VALID_CODE), GetVAMedicalTreatmentFacilityList.class);
 
 		assertNotNull(response);
 		assertNotNull(response.getMedicalTreatmentFacilityListReturn());
@@ -80,9 +82,31 @@ public class TreatmentFacilityWsClientImpl_UnitTest {
 				.getMedicalTreatmentFacility().size() == 3);
 	}
 
-	private GetVAMedicalTreatmentFacilityList makeRequest() {
+	@Test
+	public void testGetVAMedicalTreatmentFacilityList_badStateCode() {
+
+		// call the impl declared by the current @ActiveProfiles
+		GetVAMedicalTreatmentFacilityListResponse response = null;
+
+		try {
+			response = (GetVAMedicalTreatmentFacilityListResponse) callPartnerService
+					.callRemoteService(axiomWebServiceTemplate, makeRequest(TEST_BAD_CODE), GetVAMedicalTreatmentFacilityList.class);
+		} catch (final Exception e) {
+			e.printStackTrace();
+		}
+
+		assertNull("Bad state code should have thrown exception and not created a response.", response);
+	}
+
+	/**
+	 * Make a request object with the specified state code.
+	 * @param stateCode
+	 * @return
+	 */
+	private GetVAMedicalTreatmentFacilityList makeRequest(final String stateCode) {
 		final GetVAMedicalTreatmentFacilityList request = new GetVAMedicalTreatmentFacilityList();
-		request.setStateCd(TEST_STATE_CODE);
+		request.setStateCd(stateCode);
 		return request;
 	}
+
 }
