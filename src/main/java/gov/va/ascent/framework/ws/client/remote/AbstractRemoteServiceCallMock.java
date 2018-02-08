@@ -1,4 +1,4 @@
-package gov.va.vetservices.partner.ws.remote;
+package gov.va.ascent.framework.ws.client.remote;
 
 import static org.springframework.ws.test.client.RequestMatchers.payload;
 import static org.springframework.ws.test.client.ResponseCreators.withPayload;
@@ -39,8 +39,10 @@ public abstract class AbstractRemoteServiceCallMock {
 
 	/**
 	 * <p>
-	 * Implements the logic to extract a key value from the request object, that can
-	 * be used as the replaceable parameter in {@literal MOCK_FILENAME_TEMPLATE}.
+	 * Implements the logic to extract a key value from the request object, that is
+	 * used as the file name for the mocked XML response file. See
+	 * {@link AbstractRemoteServiceCallMock#MOCK_FILENAME_TEMPLATE} for the
+	 * replacement pattern used to identify a file.
 	 * </p>
 	 * <p>
 	 * Implementation of this method must not return {@code null} or empty string

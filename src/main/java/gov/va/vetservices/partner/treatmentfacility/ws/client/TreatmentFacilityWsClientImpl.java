@@ -9,6 +9,7 @@ import org.springframework.ws.client.core.WebServiceTemplate;
 
 import gov.va.ascent.framework.util.Defense;
 import gov.va.ascent.framework.ws.client.BaseWsClientImpl;
+import gov.va.ascent.framework.ws.client.remote.RemoteServiceCall;
 import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedicalTreatmentFacilityList;
 import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedicalTreatmentFacilityListResponse;
 
@@ -25,6 +26,9 @@ public class TreatmentFacilityWsClientImpl extends BaseWsClientImpl implements T
 	/** The Constant BEAN_NAME. */
 	public static final String BEAN_NAME = "treatmentFacilityWsClient";
 
+	@Autowired
+	private RemoteServiceCall remoteServiceCall;
+
 	/** axiom web service template for treatmentFacility service */
 	@Autowired
 	@Qualifier("treatmentFacilityWsClient.axiom")
@@ -35,12 +39,19 @@ public class TreatmentFacilityWsClientImpl extends BaseWsClientImpl implements T
 	 */
 	@PostConstruct
 	public final void postConstruct() {
+		Defense.notNull(remoteServiceCall, "remoteServiceCall cannot be null.");
 		Defense.notNull(treatmentFacilityWsTemplate,
 				"axiomWebServiceTemplate cannot be null in order for TreatmentWsClientImpl to work properly.");
 	}
 
 	/**
-	 * Get a list of treatment facilities from the partner
+	 * <p>Get a list of treatment facilities from the partner.</p>
+	 * <p>The RemoteServiceCall implementation is selected by the current spring profile. REMOTE_CLIENT_IMPLS
+	 * <ul>
+	 * <li>PROFILE_REMOTE_CLIENT_IMPLS instantiates RemoteServiceCallImpl</li>
+	 * <li>PROFILE_REMOTE_CLIENT_SIMULATORS instantiates RemoteServiceCallMock</li>
+	 * </ul>
+	 * </p>
 	 */
 	@Override
 	public final GetVAMedicalTreatmentFacilityListResponse getTreatmentFacilityList(
@@ -48,7 +59,7 @@ public class TreatmentFacilityWsClientImpl extends BaseWsClientImpl implements T
 		Defense.notNull(request);
 
 		final GetVAMedicalTreatmentFacilityListResponse response = (GetVAMedicalTreatmentFacilityListResponse)
-				this.treatmentFacilityWsTemplate.marshalSendAndReceive(request);
+				remoteServiceCall.callRemoteService(treatmentFacilityWsTemplate, request, request.getClass());
 
 		Defense.notNull(response, RESPONSE_FROM_WEBSERVICE_CALL_NULL);
 

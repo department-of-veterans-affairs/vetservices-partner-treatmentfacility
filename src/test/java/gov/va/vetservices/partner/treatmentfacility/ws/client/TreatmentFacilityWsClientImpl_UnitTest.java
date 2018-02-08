@@ -19,10 +19,10 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import org.springframework.ws.client.core.WebServiceTemplate;
 
 import gov.va.ascent.framework.config.AscentCommonSpringProfiles;
+import gov.va.ascent.framework.ws.client.remote.RemoteServiceCall;
 import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedicalTreatmentFacilityList;
 import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedicalTreatmentFacilityListResponse;
 import gov.va.vetservices.partner.treatmentfacility.ws.remote.RemoteServiceCallMock;
-import gov.va.vetservices.partner.ws.remote.RemoteServiceCall;
 
 /**
  * <p>

@@ -6,7 +6,7 @@ import org.springframework.ws.client.core.WebServiceTemplate;
 
 import gov.va.ascent.framework.config.AscentCommonSpringProfiles;
 import gov.va.ascent.framework.transfer.AbstractTransferObject;
-import gov.va.vetservices.partner.ws.remote.RemoteServiceCall;
+import gov.va.ascent.framework.ws.client.remote.RemoteServiceCall;
 
 /**
  * Implements the {@link RemoteServiceCall} interface for the remote client impls spring profile

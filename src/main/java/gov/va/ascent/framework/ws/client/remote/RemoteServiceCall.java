@@ -1,4 +1,4 @@
-package gov.va.vetservices.partner.ws.remote;
+package gov.va.ascent.framework.ws.client.remote;
 
 import org.springframework.ws.client.core.WebServiceTemplate;
 
