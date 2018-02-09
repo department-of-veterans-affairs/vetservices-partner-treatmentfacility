@@ -2,18 +2,17 @@ package gov.va.ascent.framework.ws.client.remote;
 
 import java.lang.reflect.Method;
 
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.client.core.WebServiceTemplate;
 
-import gov.va.ascent.framework.audit.AuditLogger;
+import gov.va.ascent.framework.audit.RequestResponseAuditData;
+import gov.va.ascent.framework.audit.RequestResponseLogSerializer;
 import gov.va.ascent.framework.messages.MessageSeverity;
-import gov.va.ascent.framework.service.ServiceResponse;
 import gov.va.ascent.framework.transfer.AbstractTransferObject;
 import gov.va.ascent.framework.util.Defense;
 
@@ -21,93 +20,111 @@ public class RemoteServiceCallAspect extends BaseRemoteServiceCallAspect {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(RemoteServiceCallAspect.class);
 
+	private final static String SOAP_METHOD = "POST";
+
+	@Autowired
+	RequestResponseLogSerializer requestResponseLogSerializer;
+
 	/**
 	 * Around advice for partner service calls to audit the request and response.
-	 * @param joinPoint
-	 * @param webserviceTemplate
-	 * @param request
-	 * @param requestClass
-	 * @return
-	 * @throws Throwable
+	 * @param joinPoint supplied by spring-aop
+	 * @param webserviceTemplate axiom WebServiceTemplate created by the IMPL
+	 * @param request the request, a xjc-generated subclass of AbstractTransferObject
+	 * @param requestClass the class of the request object
+	 * @return AbstractTransferObject the response, a xjc-generated subclass of AbstractTransferObject
+	 * @throws Throwable something went wrong with the RemoteServiceCall that occurs within this aspect
 	 */
-	// modified from ServiceValidationToMessageAspect class
 	@SuppressWarnings("unchecked")
 	@Around("standardRemoteServiceCallMethod() && args(webserviceTemplate, request, requestClass)")
 	public Object aroundAdvice(final ProceedingJoinPoint joinPoint, final WebServiceTemplate webserviceTemplate, final AbstractTransferObject request, final Class<? extends AbstractTransferObject> requestClass) throws Throwable {
-
-		LOGGER.info("@@@@@ Executing audit aspect");
 
 		if(LOGGER.isDebugEnabled()){
 			LOGGER.debug(this.getClass().getSimpleName() + " executing around method:" + joinPoint.toLongString());
 		}
 
-		LOGGER.info("@@@@@ Fetching Request");
-
 		// fetch the request
-		WebServiceTemplate serviceWebserviceTemplate = null;
-		AbstractTransferObject serviceRequest = null;
-		Class<? extends AbstractTransferObject> serviceRequestClass = null;
-		if ((joinPoint.getArgs().length > 0) && (joinPoint.getArgs()[0] != null)) {
-			serviceWebserviceTemplate = (WebServiceTemplate) joinPoint.getArgs()[0];
+		WebServiceTemplate adviceWebserviceTemplate = null;
+		AbstractTransferObject adviceRequest = null;
+		Class<? extends AbstractTransferObject> adviceRequestClass = null;
+
+		if ((joinPoint.getArgs().length >= 0) && (joinPoint.getArgs()[0] != null)) {
+			adviceWebserviceTemplate = (WebServiceTemplate) joinPoint.getArgs()[0];
 		}
-		if ((joinPoint.getArgs().length > 1) && (joinPoint.getArgs()[1] != null)) {
-			serviceRequest = (AbstractTransferObject) joinPoint.getArgs()[1];
+		if ((joinPoint.getArgs().length >= 1) && (joinPoint.getArgs()[1] != null)) {
+			adviceRequest = (AbstractTransferObject) joinPoint.getArgs()[1];
 		}
-		if ((joinPoint.getArgs().length > 2) && (joinPoint.getArgs()[2] != null)) {
-			serviceRequestClass = (Class<? extends AbstractTransferObject>) joinPoint.getArgs()[2];
+		if ((joinPoint.getArgs().length >= 2) && (joinPoint.getArgs()[2] != null)) {
+			adviceRequestClass = (Class<? extends AbstractTransferObject>) joinPoint.getArgs()[2];
 		}
 
-		Defense.notNull(serviceWebserviceTemplate);
-		Defense.notNull(serviceRequest);
-		Defense.notNull(serviceRequestClass);
-
-		LOGGER.info("@@@@@ Audit Logging Request");
+		// confirm the objects got created
+		Defense.notNull(adviceWebserviceTemplate, "RemoteServiceCallAspect aroundAdvice for standardRemoteServiceCallMethod received a null argument: WebServiceTemplate");
+		Defense.notNull(adviceRequest, "RemoteServiceCallAspect aroundAdvice for standardRemoteServiceCallMethod received a null argument: serviceRequest");
+		Defense.notNull(adviceRequestClass, "RemoteServiceCallAspect aroundAdvice for standardRemoteServiceCallMethod received a null argument: serviceRequestClass");
 
 		final MethodSignature methodSignature = (MethodSignature) joinPoint.getStaticPart().getSignature();
+		Method method = methodSignature.getMethod();
+		final RequestResponseAuditData requestResponseAuditData = new RequestResponseAuditData();
+		requestResponseAuditData.setMethod(SOAP_METHOD);
 
-		audit(MessageSeverity.INFO, methodSignature.getMethod(), serviceRequest);
+		// accumulate the request
+		requestResponseAuditData.setRequest(adviceRequest);
 
-		LOGGER.info("@@@@@ Creating Response");
-
-		// start creating the response
-		AbstractTransferObject serviceResponse = null;
+		// invoke the RemoteServiceCall.callRemoteService(...) method as the calling IMPL intended
+		AbstractTransferObject adviceResponse = null;
 		try {
-			serviceResponse = (ServiceResponse) joinPoint.proceed();
+			adviceResponse = (AbstractTransferObject) joinPoint.proceed();
 		} catch (final Throwable throwable) {
+
+			// accumulate the exception
+			requestResponseAuditData.setResponse(throwable);
+			// write the audit log
+			writeAudit(MessageSeverity.ERROR, method, requestResponseAuditData);
+
+			// log the exception
 			LOGGER.error(this.getClass().getSimpleName() + " encountered uncaught exception. Throwable Cause.",
 					throwable.getCause());
 
-			LOGGER.info("@@@@@ Audit Logging Error");
-
-			audit(MessageSeverity.INFO, methodSignature.getMethod(), throwable);
-
+			// and re-throw
 			throw throwable;
+
 		} finally {
 			LOGGER.debug(this.getClass().getSimpleName() + " after method was called.");
 		}
 
-		LOGGER.info("@@@@@ Audit Logging Response");
+		if(adviceResponse == null) {
+			adviceResponse = requestClass.newInstance();
+		}
+		// accumulate the response
+		requestResponseAuditData.setResponse(adviceResponse);
+		// write the audit log
+		writeAudit(MessageSeverity.ERROR, method, requestResponseAuditData);
 
-		audit(MessageSeverity.INFO, methodSignature.getMethod(), serviceResponse);
-
-		return serviceResponse;
+		return adviceResponse;
 	}
 
 	/**
-	 * Perform the audit logging.
+	 * Perform with AuditLogger.
 	 * @param severity
 	 * @param method
 	 * @param serviceTransferObject
 	 */
-	private void audit(final MessageSeverity severity, final Method method, final Object serviceTransferObject) {
+	void writeAudit(final MessageSeverity severity, final Method method, final RequestResponseAuditData auditDataObject) {
+
 		if(severity.equals(MessageSeverity.ERROR) || severity.equals(MessageSeverity.FATAL)) {
-			AuditLogger.error(
+
+			requestResponseLogSerializer.asyncLogRequestResponseAspectAuditData(
 					BaseRemoteServiceCallAspect.getDefaultAuditableInstance(method),
-					ReflectionToStringBuilder.toString(serviceTransferObject, ToStringStyle.JSON_STYLE));
+					auditDataObject,
+					MessageSeverity.ERROR);
+
 		} else {
-			AuditLogger.info(
+
+			requestResponseLogSerializer.asyncLogRequestResponseAspectAuditData(
 					BaseRemoteServiceCallAspect.getDefaultAuditableInstance(method),
-					ReflectionToStringBuilder.toString(serviceTransferObject, ToStringStyle.JSON_STYLE));
+					auditDataObject,
+					MessageSeverity.INFO);
+
 		}
 	}
 }

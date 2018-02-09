@@ -1,4 +1,4 @@
-package gov.va.vetservices.partner.treatmentfacility.ws.client;
+package gov.va.vetservices.partner.treatmentfacility.ws.client.remote;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -19,41 +19,24 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import org.springframework.ws.client.core.WebServiceTemplate;
 
 import gov.va.ascent.framework.config.AscentCommonSpringProfiles;
-import gov.va.ascent.framework.ws.client.remote.RemoteServiceCall;
-import gov.va.vetservices.partner.treatmentfacility.ws.client.remote.RemoteServiceCallMock;
+import gov.va.vetservices.partner.treatmentfacility.ws.client.AbstractTreatmentFacilityTest;
+import gov.va.vetservices.partner.treatmentfacility.ws.client.PartnerMockFrameworkTestConfig;
+import gov.va.vetservices.partner.treatmentfacility.ws.client.TreatmentFacilityWsClientConfig;
 import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedicalTreatmentFacilityList;
 import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedicalTreatmentFacilityListResponse;
 
-/**
- * <p>
- * Tests the webservice implementation. Note specifically the @ActiveProfiles
- * and @ContextConfiguration.
- * </p>
- * <p>
- * To engage mocking capabilities, @ActiveProfiles must specify the simulator
- * profile. {@link RemoteServiceCallMock} declares itself as the mocking
- * implementation for the simulator profile.
- * </p>
- * <p>
- * MockitoJUnitRunner class cannot be used to @RunWith because the application
- * context must Autowire the WebServiceTemplate from the client implementation.
- * </p>
- *
- * @author aburkholder
- */
 @RunWith(SpringJUnit4ClassRunner.class)
 @TestExecutionListeners(inheritListeners = false, listeners = { DependencyInjectionTestExecutionListener.class,
 		DirtiesContextTestExecutionListener.class, TransactionalTestExecutionListener.class })
 @ActiveProfiles({ AscentCommonSpringProfiles.PROFILE_REMOTE_CLIENT_SIMULATORS })
 @ContextConfiguration(inheritLocations = false, classes = { PartnerMockFrameworkTestConfig.class,
 		TreatmentFacilityWsClientConfig.class })
-public class TreatmentFacilityWsClientImpl_UnitTest extends AbstractTreatmentFacilityTest{
+public class RemoteServiceCallImpl_UnitTest extends AbstractTreatmentFacilityTest {
 
 	private final static String TEST_VALID_CODE = "VA";
-	private final static String TEST_BAD_CODE = "VAA";
 
-	@Autowired
-	RemoteServiceCall callPartnerService;
+	/** Specifically the IMPL class for the RemoteServiceCall interface */
+	private RemoteServiceCallImpl callPartnerService = new RemoteServiceCallImpl();
 
 	@Autowired
 	@Qualifier("treatmentFacilityWsClient.axiom")
@@ -66,36 +49,24 @@ public class TreatmentFacilityWsClientImpl_UnitTest extends AbstractTreatmentFac
 	}
 
 	@Test
-	public void testGetVAMedicalTreatmentFacilityList() {
-
-		// call the impl declared by the current @ActiveProfiles
-		final GetVAMedicalTreatmentFacilityListResponse response = (GetVAMedicalTreatmentFacilityListResponse) callPartnerService
-				.callRemoteService(axiomWebServiceTemplate, makeRequest(TEST_VALID_CODE), GetVAMedicalTreatmentFacilityList.class);
-
-		assertNotNull(response);
-		assertNotNull(response.getMedicalTreatmentFacilityListReturn());
-		assertNotNull(response.getMedicalTreatmentFacilityListReturn().getMedicalTreatmentFacilityList());
-		assertNotNull(response.getMedicalTreatmentFacilityListReturn().getMedicalTreatmentFacilityList()
-				.getMedicalTreatmentFacility());
-
-		assertTrue(response.getMedicalTreatmentFacilityListReturn().getMedicalTreatmentFacilityList()
-				.getMedicalTreatmentFacility().size() == 3);
-	}
-
-	@Test
-	public void testGetVAMedicalTreatmentFacilityList_badStateCode() {
-
+	public void testCallRemoteService() {
 		// call the impl declared by the current @ActiveProfiles
 		GetVAMedicalTreatmentFacilityListResponse response = null;
 
+		/* attempt to call partner will ALWAYS fail - test for specific exception classes */
 		try {
 			response = (GetVAMedicalTreatmentFacilityListResponse) callPartnerService
-					.callRemoteService(axiomWebServiceTemplate, makeRequest(TEST_BAD_CODE), GetVAMedicalTreatmentFacilityList.class);
+					.callRemoteService(axiomWebServiceTemplate, makeRequest(TEST_VALID_CODE), GetVAMedicalTreatmentFacilityList.class);
 		} catch (final Exception e) {
 			e.printStackTrace();
+
+			assertNotNull(e);
+			assertTrue(org.springframework.ws.client.WebServiceIOException.class.equals(e.getClass()));
+			assertNotNull(e.getCause());
+			assertTrue(java.net.ConnectException.class.equals(e.getCause().getClass()));
 		}
 
-		assertNull("Bad state code should have thrown exception and not created a response.", response);
+		assertNull(response);
 	}
 
 }

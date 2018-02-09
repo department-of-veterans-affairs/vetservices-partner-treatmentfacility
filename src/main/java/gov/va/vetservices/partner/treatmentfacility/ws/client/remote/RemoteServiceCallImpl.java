@@ -1,4 +1,4 @@
-package gov.va.vetservices.partner.treatmentfacility.ws.remote;
+package gov.va.vetservices.partner.treatmentfacility.ws.client.remote;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;

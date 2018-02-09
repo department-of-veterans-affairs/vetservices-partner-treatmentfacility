@@ -1,4 +1,4 @@
-package gov.va.vetservices.partner.treatmentfacility.ws.remote;
+package gov.va.vetservices.partner.treatmentfacility.ws.client.remote;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Profile;
@@ -36,7 +36,7 @@ public class RemoteServiceCallMock extends AbstractRemoteServiceCallMock impleme
 
 		String mockFilename = null;
 
-		if(request.getClass().isAssignableFrom(GetVAMedicalTreatmentFacilityList.class)) { //request instanceof GetVAMedicalTreatmentFacilityList) {
+		if(request.getClass().isAssignableFrom(GetVAMedicalTreatmentFacilityList.class)) {
 			if(StringUtils.isNotBlank(((GetVAMedicalTreatmentFacilityList) request).getStateCd())) {
 				// specify a mock filename that is the state code
 				mockFilename = ((GetVAMedicalTreatmentFacilityList) request).getStateCd();
@@ -44,7 +44,7 @@ public class RemoteServiceCallMock extends AbstractRemoteServiceCallMock impleme
 		}
 		if(StringUtils.isBlank(mockFilename)) {
 			// the API allows to retrieve all facilities if input state code is null, so hard-code a mock filename for it
-			mockFilename = "AllFacilities";
+			mockFilename = "allFacilities";
 		}
 		// return value can never be null or empty, there is Defense against it
 		return mockFilename;

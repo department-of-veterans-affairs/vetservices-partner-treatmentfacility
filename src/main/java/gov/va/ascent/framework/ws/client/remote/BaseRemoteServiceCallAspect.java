@@ -2,7 +2,9 @@ package gov.va.ascent.framework.ws.client.remote;
 
 import java.lang.reflect.Method;
 
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 
 import gov.va.ascent.framework.audit.AuditEventData;
 import gov.va.ascent.framework.audit.AuditEvents;
@@ -12,8 +14,8 @@ import gov.va.ascent.framework.audit.AuditEvents;
  *
  * @author aburkholder
  */
-//@Aspect
-//@Order(-9999)
+@Aspect
+@Order(-9999)
 public class BaseRemoteServiceCallAspect {
 
 	protected BaseRemoteServiceCallAspect() {
