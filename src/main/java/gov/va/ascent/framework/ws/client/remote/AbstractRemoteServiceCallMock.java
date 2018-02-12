@@ -35,7 +35,7 @@ import gov.va.vetservices.partner.treatmentfacility.ws.client.TreatmentFacilityW
 public abstract class AbstractRemoteServiceCallMock {
 
 	/** Constant for the filename template for mocked files */
-	protected static final String MOCK_FILENAME_TEMPLATE = "test/mocks/{0}.xml";
+	public static final String MOCK_FILENAME_TEMPLATE = "test/mocks/{0}.xml";
 
 	/**
 	 * <p>
@@ -147,8 +147,8 @@ public abstract class AbstractRemoteServiceCallMock {
 		try {
 			resource = new ResourceSource(new ClassPathResource(MessageFormat.format(MOCK_FILENAME_TEMPLATE, key)));
 		} catch (final IOException e) {
-			throw new TreatmentFacilityWsClientException(("Could not read mock XML file " + MessageFormat.format(MOCK_FILENAME_TEMPLATE, key)
-			+ ". Please make sure this response file exists in the main/resources directory."), e);
+			throw new TreatmentFacilityWsClientException(("Could not read mock XML file '" + MessageFormat.format(MOCK_FILENAME_TEMPLATE, key)
+			+ "' using key '" + key + "'. Please make sure this response file exists in the main/resources directory."), e);
 		}
 		return resource;
 	}
