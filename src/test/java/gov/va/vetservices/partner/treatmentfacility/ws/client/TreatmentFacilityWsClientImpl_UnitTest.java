@@ -16,10 +16,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
-import org.springframework.ws.client.core.WebServiceTemplate;
 
 import gov.va.ascent.framework.config.AscentCommonSpringProfiles;
-import gov.va.ascent.framework.ws.client.remote.RemoteServiceCall;
 import gov.va.vetservices.partner.treatmentfacility.ws.client.remote.RemoteServiceCallMock;
 import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedicalTreatmentFacilityList;
 import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedicalTreatmentFacilityListResponse;
@@ -53,25 +51,20 @@ public class TreatmentFacilityWsClientImpl_UnitTest extends AbstractTreatmentFac
 	private final static String TEST_BAD_CODE = "VAA";
 
 	@Autowired
-	RemoteServiceCall callPartnerService;
-
-	@Autowired
-	@Qualifier("treatmentFacilityWsClient.axiom")
-	private WebServiceTemplate axiomWebServiceTemplate;
+	@Qualifier(TreatmentFacilityWsClientImpl.BEAN_NAME)
+	TreatmentFacilityWsClient treatmentFacilityWsClientImpl;
 
 	@Before
 	public void setUp() {
-		assertNotNull("FAIL axiomWebServiceTemplate cannot be null.", axiomWebServiceTemplate);
-		assertNotNull("FAIL callPartnerService cannot be null.", callPartnerService);
+		assertNotNull("FAIL treatmentFacilityWsClientImpl cannot be null.", treatmentFacilityWsClientImpl);
 	}
 
 	@Test
 	public void testGetVAMedicalTreatmentFacilityList() {
 
 		// call the impl declared by the current @ActiveProfiles
-		final GetVAMedicalTreatmentFacilityListResponse response = (GetVAMedicalTreatmentFacilityListResponse) callPartnerService
-				.callRemoteService(axiomWebServiceTemplate, makeRequest(TEST_VALID_CODE), GetVAMedicalTreatmentFacilityList.class);
-
+		GetVAMedicalTreatmentFacilityList request = makeRequest(TEST_VALID_CODE);
+		GetVAMedicalTreatmentFacilityListResponse response = treatmentFacilityWsClientImpl.getTreatmentFacilityList(request);
 		assertNotNull(response);
 		assertNotNull(response.getMedicalTreatmentFacilityListReturn());
 		assertNotNull(response.getMedicalTreatmentFacilityListReturn().getMedicalTreatmentFacilityList());
@@ -86,11 +79,11 @@ public class TreatmentFacilityWsClientImpl_UnitTest extends AbstractTreatmentFac
 	public void testGetVAMedicalTreatmentFacilityList_badStateCode() {
 
 		// call the impl declared by the current @ActiveProfiles
+		GetVAMedicalTreatmentFacilityList request = makeRequest(TEST_BAD_CODE);
 		GetVAMedicalTreatmentFacilityListResponse response = null;
 
 		try {
-			response = (GetVAMedicalTreatmentFacilityListResponse) callPartnerService
-					.callRemoteService(axiomWebServiceTemplate, makeRequest(TEST_BAD_CODE), GetVAMedicalTreatmentFacilityList.class);
+			response = treatmentFacilityWsClientImpl.getTreatmentFacilityList(request);
 		} catch (final Exception e) {
 			e.printStackTrace();
 		}

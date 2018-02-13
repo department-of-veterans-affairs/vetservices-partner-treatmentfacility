@@ -35,9 +35,8 @@ import gov.va.ascent.framework.ws.client.BaseWsClientConfig;
  * @author vgadda
  */
 @Configuration
-@ComponentScan(basePackages = { "gov.va.vetservices.partner.treatmentfacility.ws" }, // .client"},
+@ComponentScan(basePackages = { "gov.va.vetservices.partner.treatmentfacility.ws.client" },
 excludeFilters = @Filter(Configuration.class))
-@SuppressWarnings("PMD.ExcessiveImports")
 public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 
 	/** Transfer Package Constant. */
