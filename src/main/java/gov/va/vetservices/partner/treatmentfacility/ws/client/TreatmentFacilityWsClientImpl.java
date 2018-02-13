@@ -31,7 +31,7 @@ public class TreatmentFacilityWsClientImpl extends BaseWsClientImpl implements T
 
 	/** axiom web service template for treatmentFacility service */
 	@Autowired
-	@Qualifier("treatmentFacilityWsClient.axiom")
+	@Qualifier("treatmentFacilityWsClientAxiomTemplate")
 	private WebServiceTemplate treatmentFacilityWsTemplate;
 
 	/**
@@ -41,7 +41,7 @@ public class TreatmentFacilityWsClientImpl extends BaseWsClientImpl implements T
 	public final void postConstruct() {
 		Defense.notNull(remoteServiceCall, "remoteServiceCall cannot be null.");
 		Defense.notNull(treatmentFacilityWsTemplate,
-				"axiomWebServiceTemplate cannot be null in order for TreatmentWsClientImpl to work properly.");
+				"treatmentFacilityWsTemplate cannot be null in order for TreatmentWsClientImpl to work properly.");
 	}
 
 	/**

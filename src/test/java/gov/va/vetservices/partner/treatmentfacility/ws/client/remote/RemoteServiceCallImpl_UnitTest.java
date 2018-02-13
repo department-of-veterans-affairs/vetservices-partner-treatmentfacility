@@ -56,7 +56,7 @@ public class RemoteServiceCallImpl_UnitTest extends AbstractTreatmentFacilityTes
 	private MockWebServiceServer mockWebServicesServer;
 
 	@Autowired
-	@Qualifier("treatmentFacilityWsClient.axiom")
+	@Qualifier("treatmentFacilityWsClientAxiomTemplate")
 	private WebServiceTemplate axiomWebServiceTemplate;
 
 	@Before

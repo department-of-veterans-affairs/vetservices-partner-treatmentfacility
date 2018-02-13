@@ -124,7 +124,6 @@ public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 	// bean method private or final
 	// CHECKSTYLE:OFF
 	@Bean
-	@Qualifier("treatmentFacilityWsClient.axiom")
 	WebServiceTemplate treatmentFacilityWsClientAxiomTemplate(
 			// CHECKSTYLE:ON
 			@Value("${vetservices-partner-treatmentfacility.ws.client.endpoint}") final String endpoint,
