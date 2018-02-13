@@ -22,8 +22,14 @@ public class RemoteServiceCallAspect extends BaseRemoteServiceCallAspect {
 
 	private final static String SOAP_METHOD = "POST";
 
+	/** NOTE: Do not reference this member directly. Use getRequestResponseLogSerializer() */
 	@Autowired
-	RequestResponseLogSerializer requestResponseLogSerializer;
+	private RequestResponseLogSerializer requestResponseLogSerializer;
+
+	/** Getter for the Autowired member variable. This getter must be used, and is required to facilitate unit testing */
+	RequestResponseLogSerializer getRequestResponseLogSerializer() {
+		return requestResponseLogSerializer;
+	}
 
 	/**
 	 * Around advice for partner service calls to audit the request and response.
@@ -113,14 +119,14 @@ public class RemoteServiceCallAspect extends BaseRemoteServiceCallAspect {
 
 		if(severity.equals(MessageSeverity.ERROR) || severity.equals(MessageSeverity.FATAL)) {
 
-			requestResponseLogSerializer.asyncLogRequestResponseAspectAuditData(
+			getRequestResponseLogSerializer().asyncLogRequestResponseAspectAuditData(
 					BaseRemoteServiceCallAspect.getDefaultAuditableInstance(method),
 					auditDataObject,
 					MessageSeverity.ERROR);
 
 		} else {
 
-			requestResponseLogSerializer.asyncLogRequestResponseAspectAuditData(
+			getRequestResponseLogSerializer().asyncLogRequestResponseAspectAuditData(
 					BaseRemoteServiceCallAspect.getDefaultAuditableInstance(method),
 					auditDataObject,
 					MessageSeverity.INFO);

@@ -17,12 +17,6 @@ import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedi
 public interface TreatmentFacilityWsClient {
 
 	/**
-	 * Spring profile for TreatmentFacility wsclient remote client
-	 * implementation.
-	 */
-	String PROFILE_TREATMENT_FACILITY_WSCLIENT_REMOTE_CLIENT_IMPL = "treatmentfacility_wsclient_remote_client_impl";
-
-	/**
 	 * Get the TreatmentFacilityList from the remote MedicalTreatmentFacility Web Service.
 	 * @param request The remote request entity to find treatment facilities
 	 * @return GetVAMedicalTreatmentFacilityListResponse The remote response entity

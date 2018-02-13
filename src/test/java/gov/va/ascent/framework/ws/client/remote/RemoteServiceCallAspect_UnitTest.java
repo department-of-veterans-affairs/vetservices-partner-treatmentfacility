@@ -7,8 +7,8 @@ import static org.junit.Assert.fail;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.doCallRealMethod;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.lang.reflect.Method;
@@ -25,6 +25,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.ws.client.core.WebServiceTemplate;
 
 import gov.va.ascent.framework.audit.RequestResponseAuditData;
+import gov.va.ascent.framework.audit.RequestResponseLogSerializer;
 import gov.va.ascent.framework.messages.MessageSeverity;
 import gov.va.ascent.framework.transfer.AbstractTransferObject;
 import gov.va.ascent.framework.ws.client.remote.test.mocks.TestAbstractRemoteServiceCallMockRequest;
@@ -54,7 +55,7 @@ public class RemoteServiceCallAspect_UnitTest {
 	@Spy
 	private WebServiceTemplate webserviceTemplate;
 
-	private Object[] value;
+	private Object[] argValues;
 
 	@SuppressWarnings("unchecked")
 	@Before
@@ -67,22 +68,23 @@ public class RemoteServiceCallAspect_UnitTest {
 		response.setSomeData(RESPONSE_VALUE);
 
 		// mock the joinpoint arguments
-		value = new Object[3];
-		value[0] = webserviceTemplate;
-		value[1] = request;
-		value[2] = request.getClass();
+		argValues = new Object[3];
+		argValues[0] = webserviceTemplate;
+		argValues[1] = request;
+		argValues[2] = request.getClass();
 
 		// modify behavior of spied webservice template when it executes marshalSendAndReceive
 		doReturn(response).when(webserviceTemplate).marshalSendAndReceive(request);
 
 		// modify behavior of mocked elements within the aspect itself
-		doNothing().when(mockRemoteServiceCallAspect).writeAudit(isA(MessageSeverity.class), isA(Method.class), isA(RequestResponseAuditData.class));
+		//		doNothing().when(mockRemoteServiceCallAspect).writeAudit(isA(MessageSeverity.class), isA(Method.class), isA(RequestResponseAuditData.class));
 		doCallRealMethod().when(mockRemoteServiceCallAspect).aroundAdvice(any(ProceedingJoinPoint.class), any(WebServiceTemplate.class),
 				any(AbstractTransferObject.class), any(Class.class)); // any(Class.class) should have <? extends AbstractTransferObject> but wildcards not allowed
-		when(proceedingJoinPoint.getArgs()).thenReturn(value);
+		when(proceedingJoinPoint.getArgs()).thenReturn(argValues);
+		// allows the aspect's writeAudit method to work
 		when(proceedingJoinPoint.getStaticPart()).thenReturn(staticPart);
 		when(staticPart.getSignature()).thenReturn(signature);
-		when(signature.getMethod()).thenReturn(someMethod());
+		when(signature.getMethod()).thenReturn(auditingMethod());
 	}
 
 	@Test
@@ -95,46 +97,186 @@ public class RemoteServiceCallAspect_UnitTest {
 
 		} catch (Throwable throwable) {
 			throwable.printStackTrace();
-			fail("mockRemoteServiceCallAspect.aroundAdvice() threw exception " + throwable.getMessage());
+			fail("FAIL mockRemoteServiceCallAspect.aroundAdvice() threw exception " + throwable.getMessage());
 		}
 	}
 
 	@Test
-	public void testAroundAdviceMissingArgs() throws Throwable {
-		value[0] = webserviceTemplate;
-		value[1] = request;
-		value[2] = null;
+	public void testAroundAdvice_WithMissingArgs() throws Throwable {
+		/*
+		 * Test null args
+		 */
+
+		argValues[0] = webserviceTemplate;
+		argValues[1] = request;
+		argValues[2] = null;
 		try {
 			mockRemoteServiceCallAspect.aroundAdvice(proceedingJoinPoint, webserviceTemplate, request, null);
 		} catch (Throwable throwable) {
 			assertTrue(IllegalArgumentException.class.isAssignableFrom(throwable.getClass()));
 		}
 
-		value[0] = webserviceTemplate;
-		value[1] = null;
-		value[2] = request.getClass();
+		argValues[0] = webserviceTemplate;
+		argValues[1] = null;
+		argValues[2] = request.getClass();
 		try {
 			mockRemoteServiceCallAspect.aroundAdvice(proceedingJoinPoint, webserviceTemplate, null, request.getClass());
 		} catch (Throwable throwable) {
 			assertTrue(IllegalArgumentException.class.isAssignableFrom(throwable.getClass()));
 		}
 
-		value[0] = null;
-		value[1] = request;
-		value[2] = request.getClass();
+		argValues[0] = null;
+		argValues[1] = request;
+		argValues[2] = request.getClass();
 		try {
 			mockRemoteServiceCallAspect.aroundAdvice(proceedingJoinPoint, null, request, request.getClass());
 		} catch (Throwable throwable) {
 			assertTrue(IllegalArgumentException.class.isAssignableFrom(throwable.getClass()));
 		}
+
+		/*
+		 * Test completely not there args
+		 */
+
+		argValues = new Object[2];
+		argValues[0] = webserviceTemplate;
+		argValues[1] = request;
+		try {
+			mockRemoteServiceCallAspect.aroundAdvice(proceedingJoinPoint, webserviceTemplate, request, null);
+		} catch (Throwable throwable) {
+			assertTrue(IllegalArgumentException.class.isAssignableFrom(throwable.getClass()));
+		}
+
+		argValues = new Object[1];
+		argValues[0] = webserviceTemplate;
+		try {
+			mockRemoteServiceCallAspect.aroundAdvice(proceedingJoinPoint, webserviceTemplate, null, request.getClass());
+		} catch (Throwable throwable) {
+			assertTrue(IllegalArgumentException.class.isAssignableFrom(throwable.getClass()));
+		}
+
+		argValues = new Object[0];
+		try {
+			mockRemoteServiceCallAspect.aroundAdvice(proceedingJoinPoint, webserviceTemplate, null, request.getClass());
+		} catch (Throwable throwable) {
+			assertTrue(IllegalArgumentException.class.isAssignableFrom(throwable.getClass()));
+		}
+
+		argValues = new Object[3];
+		argValues[0] = webserviceTemplate;
+		argValues[1] = request;
+		argValues[2] = request.getClass();
+		try {
+			mockRemoteServiceCallAspect.aroundAdvice(proceedingJoinPoint, null, request, request.getClass());
+		} catch (Throwable throwable) {
+			assertTrue(IllegalArgumentException.class.isAssignableFrom(throwable.getClass()));
+		}
+
+		/*
+		 * Reset args to valid array
+		 */
+		// mock the joinpoint arguments
+		argValues = new Object[3];
+		argValues[0] = webserviceTemplate;
+		argValues[1] = request;
+		argValues[2] = request.getClass();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Test
+	public void testAroundAdvice_WithJoinpointProceedReturningNull() throws Throwable {
+		argValues[0] = webserviceTemplate;
+		argValues[1] = request;
+		argValues[2] = request.getClass();
+
+		// mock the method that the Aspect uses to execute RemoteSeviceCall[Mock|Impl].callRemoteService(..)
+		when(proceedingJoinPoint.proceed()).thenReturn(null);
+
+		AbstractTransferObject abstractTransferObject = null;
+		try {
+			abstractTransferObject = (AbstractTransferObject) mockRemoteServiceCallAspect.aroundAdvice(proceedingJoinPoint, null, request, request.getClass());
+		} catch (Throwable throwable) {
+			throwable.printStackTrace();
+			fail("FAIL RemoteServiceCallAspect.aroundAdvice(...) unexpectdely threw exception when joinPoint.proceed() intentionally returned null.");
+		}
+
+		assertNotNull(abstractTransferObject);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Test
+	public void testAroundAdvice_WithFailedJoinpointProceed() throws Throwable {
+		argValues[0] = webserviceTemplate;
+		argValues[1] = request;
+		argValues[2] = request.getClass();
+
+		// mock the method that the Aspect uses to execute RemoteSeviceCall[Mock|Impl].callRemoteService(..)
+		when(proceedingJoinPoint.proceed()).thenThrow(ArithmeticException.class);
+
+		try {
+			mockRemoteServiceCallAspect.aroundAdvice(proceedingJoinPoint, null, request, request.getClass());
+			fail("FAIL RemoteServiceCallAspect.aroundAdvice(...) failed to generate an exception in joinPoint.proceed() as intended.");
+		} catch (ArithmeticException e) {
+			// no-op, this exception is expected per above mock
+			e.printStackTrace();
+		} catch (Throwable throwable) {
+			throwable.printStackTrace();
+			assertTrue(IllegalArgumentException.class.isAssignableFrom(throwable.getClass()));
+		}
+	}
+
+	@Test
+	public void testGetRequestResponseLogSerializer() {
+		doCallRealMethod().when(mockRemoteServiceCallAspect).getRequestResponseLogSerializer();
+		assertNull(mockRemoteServiceCallAspect.getRequestResponseLogSerializer());
+	}
+
+	@Test
+	public void testWriteAudit() throws NoSuchMethodException {
+		RequestResponseAuditData auditDataObject = new RequestResponseAuditData();
+		auditDataObject.setRequest(request);
+		auditDataObject.setResponse(response);
+
+		doCallRealMethod().when(mockRemoteServiceCallAspect).writeAudit(isA(MessageSeverity.class), isA(Method.class), isA(RequestResponseAuditData.class));
+		RequestResponseLogSerializer mockRequestResponseLogSerializer = mock(RequestResponseLogSerializer.class);
+		doReturn(mockRequestResponseLogSerializer).when(mockRemoteServiceCallAspect).getRequestResponseLogSerializer();
+
+		/*
+		 * Test ERROR / FATAL audit logging
+		 */
+
+		try {
+			mockRemoteServiceCallAspect.writeAudit(MessageSeverity.ERROR, this.auditingMethod(), auditDataObject);
+		} catch (Throwable e) {
+			fail("FAIL RemoteServiceCallAspect.writeAudit unexpectedly threw an exception");
+			e.printStackTrace();
+		}
+
+		try {
+			mockRemoteServiceCallAspect.writeAudit(MessageSeverity.FATAL, this.auditingMethod(), auditDataObject);
+		} catch (Throwable e) {
+			fail("FAIL RemoteServiceCallAspect.writeAudit unexpectedly threw an exception");
+			e.printStackTrace();
+		}
+
+		/*
+		 * Test INFO or lower audit logging
+		 */
+
+		try {
+			mockRemoteServiceCallAspect.writeAudit(MessageSeverity.INFO, this.auditingMethod(), auditDataObject);
+		} catch (Throwable e) {
+			fail("FAIL RemoteServiceCallAspect.writeAudit unexpectedly threw an exception");
+			e.printStackTrace();
+		}
 	}
 
 	/** required for Audit log events */
-	public Method someMethod() throws NoSuchMethodException{
-		return getClass().getDeclaredMethod("someResponseMethod",String.class);
+	public Method auditingMethod() throws NoSuchMethodException{
+		return getClass().getDeclaredMethod("someResponseMethod", String.class);
 	}
 
-	/** required to make someMethod() work */
+	/** required to make auditingMethod() work */
 	public String someResponseMethod(String irrelevant) {
 		return irrelevant;
 	}

@@ -51,6 +51,7 @@ public class BaseRemoteServiceCallAspect_UnitTest {
 	@Test
 	public void testGetDefaultAuditableInstance() throws NoSuchMethodException {
 		BaseRemoteServiceCallAspect.getDefaultAuditableInstance(myMethod());
+		BaseRemoteServiceCallAspect.getDefaultAuditableInstance(null);
 	}
 
 	public Method myMethod() throws NoSuchMethodException {
