@@ -1,5 +1,9 @@
 package gov.va.vetservices.partner.treatmentfacility.ws.client;
 
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+
 import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedicalTreatmentFacilityList;
 
 public class AbstractTreatmentFacilityTest {
@@ -13,6 +17,11 @@ public class AbstractTreatmentFacilityTest {
 		final GetVAMedicalTreatmentFacilityList request = new GetVAMedicalTreatmentFacilityList();
 		request.setStateCd(stateCode);
 		return request;
+	}
+
+	@Test
+	public void testInterface() {
+		assertTrue(TreatmentFacilityWsClient.class.isInterface());
 	}
 
 }
