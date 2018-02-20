@@ -20,14 +20,17 @@ import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedi
  * @author aburkholder
  */
 @Profile(AscentCommonSpringProfiles.PROFILE_REMOTE_CLIENT_SIMULATORS)
-@Component(RemoteServiceCall.BEAN_NAME)
+@Component(RemoteServiceCallMock.BEAN_NAME_LOCAL)
 public class RemoteServiceCallMock extends AbstractRemoteServiceCallMock implements RemoteServiceCall {
 
 	private static final String ALL_FACILITIES = "allFacilities";
 
+	/** The spring bean name for simulation mocks. MUST BE UNIQUE ACROSS ALL PARTNER JARS */
+	static final String BEAN_NAME_LOCAL = "treatmentFacilityRemoteServiceCallMock";
+
 	@Override
-	public AbstractTransferObject callRemoteService(final WebServiceTemplate webserviceTemplate,
-			final AbstractTransferObject request, final Class<? extends AbstractTransferObject> requestClass) {
+	public AbstractTransferObject callRemoteService(final WebServiceTemplate webserviceTemplate, final AbstractTransferObject request,
+			final Class<? extends AbstractTransferObject> requestClass) {
 
 		return super.callMockService(webserviceTemplate, request, requestClass);
 	}
@@ -38,12 +41,12 @@ public class RemoteServiceCallMock extends AbstractRemoteServiceCallMock impleme
 
 		String mockFilename = null;
 
-		if(request.getClass().isAssignableFrom(GetVAMedicalTreatmentFacilityList.class)
+		if (request.getClass().isAssignableFrom(GetVAMedicalTreatmentFacilityList.class)
 				&& StringUtils.isNotBlank(((GetVAMedicalTreatmentFacilityList) request).getStateCd())) {
 			// specify a mock filename that is the state code
 			mockFilename = ((GetVAMedicalTreatmentFacilityList) request).getStateCd();
 		}
-		if(StringUtils.isBlank(mockFilename)) {
+		if (StringUtils.isBlank(mockFilename)) {
 			// the API allows to retrieve all facilities if input state code is null, so hard-code a mock filename for it
 			mockFilename = ALL_FACILITIES;
 		}
