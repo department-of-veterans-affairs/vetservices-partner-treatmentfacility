@@ -51,7 +51,7 @@ public class RemoteServiceCallImpl_UnitTest extends AbstractTreatmentFacilityTes
 	private final static String TEST_VALID_CODE = "VA";
 
 	/** Specifically the IMPL class for the RemoteServiceCall interface */
-	private RemoteServiceCallImpl callPartnerService = new RemoteServiceCallImpl();
+	private TreatmentFacilityRemoteServiceCallImpl callPartnerService = new TreatmentFacilityRemoteServiceCallImpl();
 
 	private MockWebServiceServer mockWebServicesServer;
 

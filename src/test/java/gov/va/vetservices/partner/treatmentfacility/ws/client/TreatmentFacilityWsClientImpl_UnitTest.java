@@ -18,7 +18,7 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
 import gov.va.ascent.framework.config.AscentCommonSpringProfiles;
-import gov.va.vetservices.partner.treatmentfacility.ws.client.remote.RemoteServiceCallMock;
+import gov.va.vetservices.partner.treatmentfacility.ws.client.remote.TreatmentFacilityRemoteServiceCallMock;
 import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedicalTreatmentFacilityList;
 import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedicalTreatmentFacilityListResponse;
 
@@ -29,7 +29,7 @@ import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedi
  * </p>
  * <p>
  * To engage mocking capabilities, @ActiveProfiles must specify the simulator
- * profile. {@link RemoteServiceCallMock} declares itself as the mocking
+ * profile. {@link TreatmentFacilityRemoteServiceCallMock} declares itself as the mocking
  * implementation for the simulator profile.
  * </p>
  * <p>

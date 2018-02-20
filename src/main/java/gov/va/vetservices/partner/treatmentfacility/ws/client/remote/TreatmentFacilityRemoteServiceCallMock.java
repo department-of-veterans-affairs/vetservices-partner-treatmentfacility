@@ -20,11 +20,8 @@ import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedi
  * @author aburkholder
  */
 @Profile(AscentCommonSpringProfiles.PROFILE_REMOTE_CLIENT_SIMULATORS)
-@Component(RemoteServiceCallMock.BEAN_NAME_LOCAL)
-public class RemoteServiceCallMock extends AbstractRemoteServiceCallMock implements RemoteServiceCall {
-
-	/** The spring bean name for simulation mocks. MUST BE UNIQUE ACROSS ALL PARTNER JARS */
-	static final String BEAN_NAME_LOCAL = "treatmentFacilityRemoteServiceCallMock";
+@Component(TreatmentFacilityRemoteServiceCallImpl.BEAN_NAME)
+public class TreatmentFacilityRemoteServiceCallMock extends AbstractRemoteServiceCallMock {
 
 	/** default mock data if stateCode is null or empty */
 	private static final String ALL_FACILITIES = "allFacilities";

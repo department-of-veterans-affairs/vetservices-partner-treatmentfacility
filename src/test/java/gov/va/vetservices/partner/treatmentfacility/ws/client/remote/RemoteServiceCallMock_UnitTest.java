@@ -16,7 +16,7 @@ public class RemoteServiceCallMock_UnitTest extends AbstractTreatmentFacilityTes
 
 	@Test
 	public void testGetKeyForMockResponse() {
-		RemoteServiceCallMock mock = new RemoteServiceCallMock();
+		TreatmentFacilityRemoteServiceCallMock mock = new TreatmentFacilityRemoteServiceCallMock();
 		GetVAMedicalTreatmentFacilityList request = makeRequest(TEST_VALID_CODE);
 		String keyForMockResponse = mock.getKeyForMockResponse(request);
 
