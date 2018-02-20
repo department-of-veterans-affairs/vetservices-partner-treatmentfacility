@@ -23,10 +23,11 @@ import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedi
 @Component(RemoteServiceCallMock.BEAN_NAME_LOCAL)
 public class RemoteServiceCallMock extends AbstractRemoteServiceCallMock implements RemoteServiceCall {
 
-	private static final String ALL_FACILITIES = "allFacilities";
-
 	/** The spring bean name for simulation mocks. MUST BE UNIQUE ACROSS ALL PARTNER JARS */
 	static final String BEAN_NAME_LOCAL = "treatmentFacilityRemoteServiceCallMock";
+
+	/** default mock data if stateCode is null or empty */
+	private static final String ALL_FACILITIES = "allFacilities";
 
 	@Override
 	public AbstractTransferObject callRemoteService(final WebServiceTemplate webserviceTemplate, final AbstractTransferObject request,
