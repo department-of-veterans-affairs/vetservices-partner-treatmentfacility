@@ -27,6 +27,7 @@ public class TreatmentFacilityWsClientImpl extends BaseWsClientImpl implements T
 	/** The Constant BEAN_NAME. */
 	public static final String BEAN_NAME = "treatmentFacilityWsClient";
 
+	/** the switchable remote for service calls (impl or mock) */
 	@Autowired
 	@Qualifier(TreatmentFacilityRemoteServiceCallImpl.BEAN_NAME)
 	private RemoteServiceCall remoteServiceCall;
@@ -43,7 +44,7 @@ public class TreatmentFacilityWsClientImpl extends BaseWsClientImpl implements T
 	public final void postConstruct() {
 		Defense.notNull(remoteServiceCall, "remoteServiceCall cannot be null.");
 		Defense.notNull(treatmentFacilityWsTemplate,
-				"treatmentFacilityWsTemplate cannot be null in order for TreatmentWsClientImpl to work properly.");
+				"treatmentFacilityWsTemplate cannot be null in order for " + this.getClass().getSimpleName() + " to work properly.");
 	}
 
 	/**
@@ -60,7 +61,7 @@ public class TreatmentFacilityWsClientImpl extends BaseWsClientImpl implements T
 	 */
 	@Override
 	public final GetVAMedicalTreatmentFacilityListResponse getTreatmentFacilityList(final GetVAMedicalTreatmentFacilityList request) {
-		Defense.notNull(request);
+		Defense.notNull(request, REQUEST_FOR_WEBSERVICE_CALL_NULL);
 
 		final GetVAMedicalTreatmentFacilityListResponse response = (GetVAMedicalTreatmentFacilityListResponse) remoteServiceCall
 				.callRemoteService(treatmentFacilityWsTemplate, request, request.getClass());

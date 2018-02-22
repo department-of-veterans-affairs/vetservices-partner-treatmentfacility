@@ -6,8 +6,6 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.annotation.PostConstruct;
 
@@ -36,21 +34,25 @@ import gov.va.ascent.framework.ws.client.BaseWsClientConfig;
  */
 @Configuration
 @ComponentScan(basePackages = { "gov.va.vetservices.partner.treatmentfacility.ws.client" },
-excludeFilters = @Filter(Configuration.class))
+		excludeFilters = @Filter(Configuration.class))
 public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 
 	/** Transfer Package Constant. */
 	private static final String TRANSFER_PACKAGE = "gov.va.vetservices.partner.treatmentfacility.ws.client.transfer";
 
-	/** Exception class for exception interceptor */
-	private static final String DEFAULT_EXCEPTION_CLASS = "gov.va.vetservices.partner.treatmentfacility.ws.client.TreatmentFacilityWsClientException";
+	/** the XSD for this web service */
+	private static final String XSD = "xsd/medicalLookup-services.xsd";
 
-	/** exclude package for exception interceptor */
-	private static final String EXCLUDE_EXCEPTION_PKG = "gov.va.vetservices.partner.treatmentfacility.ws.client";
+	/** Exception class for exception interceptor */
+	private static final String DEFAULT_EXCEPTION_CLASS =
+			"gov.va.vetservices.partner.treatmentfacility.ws.client.TreatmentFacilityWsClientException";
+
+//	/** exclude package for exception interceptor */
+//	private static final String EXCLUDE_EXCEPTION_PKG = "gov.va.vetservices.partner.treatmentfacility.ws.client";
 
 	// ####### for test, member values are from src/test/resource/application.yml ######
 	/**
-	 * Boolean flag to indicate if we should log the JAXB error as an error nor
+	 * Boolean flag to indicate if we should log the JAXB error as an error or
 	 * debug. In the test environment we get so many errors we don't want to polute
 	 * logs, however in prod data is expected to be cleaner, logs less polluted and
 	 * we may want these logged.
@@ -92,7 +94,7 @@ public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 	@Qualifier("treatmentFacilityMarshaller")
 	Jaxb2Marshaller treatmentFacilityMarshaller() {
 		// CHECKSTYLE:ON
-		final Resource[] schemas = new Resource[] { new ClassPathResource("xsd/medicalLookup-services.xsd") };
+		final Resource[] schemas = new Resource[] { new ClassPathResource(XSD) };
 
 		return getMarshaller(TRANSFER_PACKAGE, schemas, logSchemaValidationFailureAsError);
 	}
@@ -131,12 +133,12 @@ public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 			@Value("${vetservices-partner-treatmentfacility.ws.client.connectionTimeout:60000}") final int connectionTimeout) {
 
 		Defense.hasText(endpoint, "TreatmentFacilityWsClientAxiomTemplate endpoint cannot be empty.");
-		Defense.hasText(endpoint, "TreatmentFacilityWsClientAxiomTemplate readTimeout cannot be empty.");
-		Defense.hasText(endpoint, "TreatmentFacilityWsClientAxiomTemplate connectionTimeout cannot be empty.");
+		Defense.isTrue(readTimeout > 0, "TreatmentFacilityWsClientAxiomTemplate readTimeout cannot be zero.");
+		Defense.isTrue(connectionTimeout > 0, "TreatmentFacilityWsClientAxiomTemplate connectionTimeout cannot be zero.");
 
 		return createDefaultWebServiceTemplate(endpoint, readTimeout, connectionTimeout, treatmentFacilityMarshaller(),
-				treatmentFacilityMarshaller(), new ClientInterceptor[] {
-						getVAServiceWss4jSecurityInterceptor(username, password, vaApplicationName, null) });
+				treatmentFacilityMarshaller(),
+				new ClientInterceptor[] { getVAServiceWss4jSecurityInterceptor(username, password, vaApplicationName, null) });
 	}
 
 	/**
@@ -174,12 +176,12 @@ public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 	@Bean
 	InterceptingExceptionTranslator treatmentFacilityWsClientExceptionInterceptor() throws ClassNotFoundException {
 		// CHECKSTYLE:ON
-		final InterceptingExceptionTranslator interceptingExceptionTranslator = getInterceptingExceptionTranslator(
-				DEFAULT_EXCEPTION_CLASS, PACKAGE_WSS_FOUNDATION_EXCEPTION);
-		final Set<String> exclusionSet = new HashSet<>();
-		exclusionSet.add(PACKAGE_WSS_FOUNDATION_EXCEPTION);
-		exclusionSet.add(EXCLUDE_EXCEPTION_PKG);
-		interceptingExceptionTranslator.setExclusionSet(exclusionSet);
+		final InterceptingExceptionTranslator interceptingExceptionTranslator =
+				getInterceptingExceptionTranslator(DEFAULT_EXCEPTION_CLASS, PACKAGE_WSS_FOUNDATION_EXCEPTION);
+//		new HashSet<>();
+//		exclusionSet.add(PACKAGE_WSS_FOUNDATION_EXCEPTION);
+//		exclusionSet.add(EXCLUDE_EXCEPTION_PKG);
+//		interceptingExceptionTranslator.setExclusionSet(exclusionSet);
 		return interceptingExceptionTranslator;
 	}
 
@@ -195,15 +197,7 @@ public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 	@Bean
 	BeanNameAutoProxyCreator treatmentFacilityWsClientBeanProxy() {
 		// CHECKSTYLE:ON
-		final String[] beanNames = { TreatmentFacilityWsClientImpl.BEAN_NAME }; // ,
-
-		// load each interceptor needed for the above beans.
-		final String[] interceptorNames = { "treatmentFacilityWsClientExceptionInterceptor",
-		"treatmentFacilityWsClientPerformanceLogMethodInterceptor" };
-
-		final BeanNameAutoProxyCreator creator = new BeanNameAutoProxyCreator();
-		creator.setBeanNames(beanNames);
-		creator.setInterceptorNames(interceptorNames);
-		return creator;
+		return getBeanNameAutoProxyCreator(new String[] { TreatmentFacilityWsClientImpl.BEAN_NAME }, new String[] {
+				"treatmentFacilityWsClientExceptionInterceptor", "treatmentFacilityWsClientPerformanceLogMethodInterceptor" });
 	}
 }

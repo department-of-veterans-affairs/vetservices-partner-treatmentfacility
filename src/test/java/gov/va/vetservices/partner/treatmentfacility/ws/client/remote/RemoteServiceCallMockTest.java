@@ -1,6 +1,7 @@
 package gov.va.vetservices.partner.treatmentfacility.ws.client.remote;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -9,7 +10,7 @@ import gov.va.vetservices.partner.treatmentfacility.ws.client.AbstractTreatmentF
 import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedicalTreatmentFacilityList;
 import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.MedicalTreatmentFacilityListReturnVO;
 
-public class RemoteServiceCallMock_UnitTest extends AbstractTreatmentFacilityTest {
+public class RemoteServiceCallMockTest extends AbstractTreatmentFacilityTest {
 
 	private final static String TEST_VALID_CODE = "VA";
 	private static final String ALL_FACILITIES = "allFacilities";
@@ -23,7 +24,14 @@ public class RemoteServiceCallMock_UnitTest extends AbstractTreatmentFacilityTes
 		assertNotNull(keyForMockResponse);
 		assertTrue(keyForMockResponse.equals(TEST_VALID_CODE));
 
-		request.setStateCd(null);
+	}
+
+	@Test
+	public void testGetKeyForMockResponse_NullStateCode() {
+		TreatmentFacilityRemoteServiceCallMock mock = new TreatmentFacilityRemoteServiceCallMock();
+		GetVAMedicalTreatmentFacilityList request = makeRequest(null);
+		String keyForMockResponse = mock.getKeyForMockResponse(request);
+
 		keyForMockResponse = mock.getKeyForMockResponse(request);
 
 		assertNotNull(keyForMockResponse);
@@ -36,8 +44,23 @@ public class RemoteServiceCallMock_UnitTest extends AbstractTreatmentFacilityTes
 	}
 
 	@Test
-	public void testCallRemoteService() {
-		assertTrue(true);
+	public void testCallRemoteService_NullRequest() {
+		TreatmentFacilityRemoteServiceCallMock mock = new TreatmentFacilityRemoteServiceCallMock();
+
+		GetVAMedicalTreatmentFacilityList request = null;
+
+		String keyForMockResponse = null;
+
+		try {
+			keyForMockResponse = mock.getKeyForMockResponse(request);
+		} catch (Throwable e) {
+			e.printStackTrace();
+			assertTrue("Invalid excepetion was thrown.", IllegalArgumentException.class.equals(e.getClass()));
+			assertTrue("Exception message contains wrong string.",
+					e.getMessage().equals(TreatmentFacilityRemoteServiceCallMock.ERROR_NULL_REQUEST));
+		}
+
+		assertNull("Null request should have thrown exception.", keyForMockResponse);
 	}
 
 }

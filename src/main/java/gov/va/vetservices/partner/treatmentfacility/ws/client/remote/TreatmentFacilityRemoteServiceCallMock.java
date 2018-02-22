@@ -26,6 +26,15 @@ public class TreatmentFacilityRemoteServiceCallMock extends AbstractRemoteServic
 	/** default mock data if stateCode is null or empty */
 	private static final String ALL_FACILITIES = "allFacilities";
 
+	/** error for null request */
+	static final String ERROR_NULL_REQUEST = "getKeyForMockResponse request parameter cannont be null.";
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see gov.va.ascent.framework.ws.client.remote.RemoteServiceCall#callRemoteService(org.springframework.ws.client.core.
+	 * WebServiceTemplate, gov.va.ascent.framework.transfer.AbstractTransferObject, java.lang.Class)
+	 */
 	@Override
 	public AbstractTransferObject callRemoteService(final WebServiceTemplate webserviceTemplate, final AbstractTransferObject request,
 			final Class<? extends AbstractTransferObject> requestClass) {
@@ -33,9 +42,16 @@ public class TreatmentFacilityRemoteServiceCallMock extends AbstractRemoteServic
 		return super.callMockService(webserviceTemplate, request, requestClass);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see
+	 * gov.va.ascent.framework.ws.client.remote.AbstractRemoteServiceCallMock#getKeyForMockResponse(gov.va.ascent.framework.transfer.
+	 * AbstractTransferObject)
+	 */
 	@Override
 	protected String getKeyForMockResponse(final AbstractTransferObject request) {
-		Defense.notNull(request);
+		Defense.notNull(request, ERROR_NULL_REQUEST);
 
 		String mockFilename = null;
 

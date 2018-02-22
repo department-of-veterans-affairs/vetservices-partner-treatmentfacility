@@ -13,7 +13,7 @@ vetservices-partner-treatmentfacility.ws.client.username: unitTestUsername
 vetservices-partner-treatmentfacility.ws.client.password: unitTestPassword
 vetservices-partner-treatmentfacility.ws.client.vaApplicationName: unitTestAppName
 
-wss-persist.hibernateJpaConfig.packagesToScan: gov.va.evss.database.persist.domain
+#wss-persist.hibernateJpaConfig.packagesToScan: gov.va.evss.database.persist.domain
 
 vetservices-partner-treatmentfacility.ws.client.logSchemaValidationFailureAsError: true
 vetservices-partner-treatmentfacility.ws.client.readTimeout: 60000

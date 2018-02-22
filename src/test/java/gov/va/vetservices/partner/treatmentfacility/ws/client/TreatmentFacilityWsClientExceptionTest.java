@@ -5,7 +5,7 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
-public class TreatmentFacilityWsClientException_UnitTest {
+public class TreatmentFacilityWsClientExceptionTest {
 
 	private TreatmentFacilityWsClientException testException;
 
