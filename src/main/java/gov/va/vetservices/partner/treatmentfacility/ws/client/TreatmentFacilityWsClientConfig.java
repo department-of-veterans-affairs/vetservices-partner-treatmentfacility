@@ -47,9 +47,6 @@ public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 	private static final String DEFAULT_EXCEPTION_CLASS =
 			"gov.va.vetservices.partner.treatmentfacility.ws.client.TreatmentFacilityWsClientException";
 
-//	/** exclude package for exception interceptor */
-//	private static final String EXCLUDE_EXCEPTION_PKG = "gov.va.vetservices.partner.treatmentfacility.ws.client";
-
 	// ####### for test, member values are from src/test/resource/application.yml ######
 	/**
 	 * Boolean flag to indicate if we should log the JAXB error as an error or
@@ -176,13 +173,7 @@ public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 	@Bean
 	InterceptingExceptionTranslator treatmentFacilityWsClientExceptionInterceptor() throws ClassNotFoundException {
 		// CHECKSTYLE:ON
-		final InterceptingExceptionTranslator interceptingExceptionTranslator =
-				getInterceptingExceptionTranslator(DEFAULT_EXCEPTION_CLASS, PACKAGE_WSS_FOUNDATION_EXCEPTION);
-//		new HashSet<>();
-//		exclusionSet.add(PACKAGE_WSS_FOUNDATION_EXCEPTION);
-//		exclusionSet.add(EXCLUDE_EXCEPTION_PKG);
-//		interceptingExceptionTranslator.setExclusionSet(exclusionSet);
-		return interceptingExceptionTranslator;
+		return getInterceptingExceptionTranslator(DEFAULT_EXCEPTION_CLASS, PACKAGE_WSS_FOUNDATION_EXCEPTION);
 	}
 
 	/**
