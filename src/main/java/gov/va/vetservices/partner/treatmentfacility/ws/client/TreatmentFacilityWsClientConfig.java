@@ -130,8 +130,6 @@ public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 			@Value("${vetservices-partner-treatmentfacility.ws.client.connectionTimeout:60000}") final int connectionTimeout) {
 
 		Defense.hasText(endpoint, "TreatmentFacilityWsClientAxiomTemplate endpoint cannot be empty.");
-		Defense.isTrue(readTimeout > 0, "TreatmentFacilityWsClientAxiomTemplate readTimeout cannot be zero.");
-		Defense.isTrue(connectionTimeout > 0, "TreatmentFacilityWsClientAxiomTemplate connectionTimeout cannot be zero.");
 
 		return createDefaultWebServiceTemplate(endpoint, readTimeout, connectionTimeout, treatmentFacilityMarshaller(),
 				treatmentFacilityMarshaller(),
