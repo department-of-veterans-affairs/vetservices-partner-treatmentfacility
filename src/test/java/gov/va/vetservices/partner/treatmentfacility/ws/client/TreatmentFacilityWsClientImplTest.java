@@ -43,9 +43,9 @@ import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedi
 @TestExecutionListeners(inheritListeners = false, listeners = { DependencyInjectionTestExecutionListener.class,
 		DirtiesContextTestExecutionListener.class, TransactionalTestExecutionListener.class })
 @ActiveProfiles({ AscentCommonSpringProfiles.PROFILE_REMOTE_CLIENT_SIMULATORS })
-@ContextConfiguration(inheritLocations = false, classes = { PartnerMockFrameworkTestConfig.class,
-		TreatmentFacilityWsClientConfig.class })
-public class TreatmentFacilityWsClientImplTest extends AbstractTreatmentFacilityTest{
+@ContextConfiguration(inheritLocations = false,
+		classes = { PartnerMockFrameworkTestConfig.class, TreatmentFacilityWsClientConfig.class })
+public class TreatmentFacilityWsClientImplTest extends AbstractTreatmentFacilityTest {
 
 	private final static String TEST_VALID_CODE = "VA";
 	private final static String TEST_BAD_CODE = "VAA";
@@ -68,11 +68,11 @@ public class TreatmentFacilityWsClientImplTest extends AbstractTreatmentFacility
 		assertNotNull(response);
 		assertNotNull(response.getMedicalTreatmentFacilityListReturn());
 		assertNotNull(response.getMedicalTreatmentFacilityListReturn().getMedicalTreatmentFacilityList());
-		assertNotNull(response.getMedicalTreatmentFacilityListReturn().getMedicalTreatmentFacilityList()
-				.getMedicalTreatmentFacility());
+		assertNotNull(
+				response.getMedicalTreatmentFacilityListReturn().getMedicalTreatmentFacilityList().getMedicalTreatmentFacilities());
 
-		assertTrue(response.getMedicalTreatmentFacilityListReturn().getMedicalTreatmentFacilityList()
-				.getMedicalTreatmentFacility().size() == 3);
+		assertTrue(response.getMedicalTreatmentFacilityListReturn().getMedicalTreatmentFacilityList().getMedicalTreatmentFacilities()
+				.size() == 3);
 	}
 
 	@Test
