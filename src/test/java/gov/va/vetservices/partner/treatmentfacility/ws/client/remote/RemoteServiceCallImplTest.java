@@ -44,8 +44,7 @@ import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedi
 @TestExecutionListeners(inheritListeners = false, listeners = { DependencyInjectionTestExecutionListener.class,
 		DirtiesContextTestExecutionListener.class, TransactionalTestExecutionListener.class })
 @ActiveProfiles({ AscentCommonSpringProfiles.PROFILE_REMOTE_CLIENT_SIMULATORS })
-@ContextConfiguration(inheritLocations = false, classes = { PartnerMockFrameworkTestConfig.class,
-		TreatmentFacilityWsClientConfig.class })
+@ContextConfiguration(inheritLocations = false, classes = { PartnerMockFrameworkTestConfig.class, TreatmentFacilityWsClientConfig.class })
 public class RemoteServiceCallImplTest extends AbstractTreatmentFacilityTest {
 
 	private final static String TEST_VALID_CODE = "VA";

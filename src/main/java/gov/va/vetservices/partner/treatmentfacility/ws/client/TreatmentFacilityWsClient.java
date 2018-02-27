@@ -11,8 +11,8 @@ import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedi
  *
  */
 //Sonar mis-identifies this interface as a single-abstract-method interface ("squid:S1609").
-// More methods could be added from the partner's SOAP API,
-// so anyone who uses lambda expressions against this interface will be hosed if/when that happens.
+// Future requirements could add more methods to this class from the partner's SOAP API,
+// so it is best to disallow lambda expressions against this interface (not put @FunctionalInterface on this class).
 @SuppressWarnings("squid:S1609")
 public interface TreatmentFacilityWsClient {
 
