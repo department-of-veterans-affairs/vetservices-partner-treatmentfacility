@@ -1,0 +1,117 @@
+<project 
+	xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>gov.va.ascent</groupId>
+		<artifactId>ascent-libraries-parent</artifactId>
+		<version>0.0.2-SNAPSHOT</version>
+	</parent>
+
+	<groupId>gov.va.vetservices.partner</groupId>
+	<artifactId>vetservices-partner-treatmentfacility</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>${project.artifactId}</name>
+	<description>VetServices Medical Treatment Facility partner client</description>
+
+	<packaging>jar</packaging>
+
+	<properties>
+		<!-- system properties -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>gov.va.ascent</groupId>
+			<artifactId>ascent-framework</artifactId>
+			<version>0.0.4-SNAPSHOT</version>
+		</dependency>
+
+		<!-- Apache Commons project dependencies -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+
+		<!-- Test Dependencies -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- for WebServiceTemplate -->
+		<dependency>
+			<groupId>org.springframework.ws</groupId>
+			<artifactId>spring-ws-core</artifactId>
+		</dependency>
+		<!-- for MockWebServiceServer -->
+		<dependency>
+			<groupId>org.springframework.ws</groupId>
+			<artifactId>spring-ws-test</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+
+		<plugins>
+			<!-- repackages jar and war plugins so they can be executed with command line -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>1.5</version>
+				<configuration>
+					<bindingDirectory>${project.basedir}/src/main/resources/xsd</bindingDirectory>
+					<extension>true</extension>
+					<schemaIncludes>
+						<schemaInclude>**/*.xsd</schemaInclude>
+					</schemaIncludes>
+					<quiet>true</quiet>
+					<verbose>false</verbose>
+					<clearOutputDir>false</clearOutputDir>
+					<arguments>-mark-generated</arguments>
+				</configuration>
+				<executions>
+					<execution>
+						<id>xjc-treatmentfacility</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+						<configuration>
+							<schemaDirectory>${project.basedir}/src/main/resources/xsd</schemaDirectory>
+							<packageName>gov.va.vetservices.partner.treatmentfacility.ws.client.transfer</packageName>
+							<staleFile>${project.build.directory}/generated-sources/.jaxb-staleFlag-TreatmentFacility</staleFile>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+	</build>
+
+</project>

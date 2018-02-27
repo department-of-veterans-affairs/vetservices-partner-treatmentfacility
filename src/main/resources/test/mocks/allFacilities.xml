@@ -1,0 +1,1006 @@
+<!-- S:Envelope xmlns:S=</postalCd>http://schemas.xmlsoap.org/soap/envelope/</postalCd>>
+   <S:Body -->
+      <ns2:getVAMedicalTreatmentFacilityListResponse xmlns:ns2=</postalCd>http://gov.va.vba.benefits.vdc/services</postalCd> xmlns:ns3=</postalCd>http://gov.va.vba.benefits.vdc/data</postalCd> xmlns:ns4=</postalCd>http://gov.va.vba.benefits.vdc/webfault</postalCd>>
+         <ns3:MedicalTreatmentFacilityListReturn>
+            <MedicalTreatmentFacilityList>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>MINNEAPOLIS</cityNm>
+                  <ptcpntId>12965800</ptcpntId>
+                  <facilityNm>MINNEAPOLIS VA MEDICAL CENTER</facilityNm>
+                  <postalCd>MN</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>ANCHORAGE</cityNm>
+                  <ptcpntId>12965731</ptcpntId>
+                  <facilityNm>ALASKA VA HEALTHCARE SYSTEM AND REGIONAL OFFICE</facilityNm>
+                  <postalCd>AK</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BIRMINGHAM</cityNm>
+                  <ptcpntId>12965732</ptcpntId>
+                  <facilityNm>BIRMINGHAM VA MEDICAL CENTER</facilityNm>
+                  <postalCd>AL</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>MONTGOMERY</cityNm>
+                  <ptcpntId>12965733</ptcpntId>
+                  <facilityNm>CENTRAL ALABAMA VHCS WEST CAMPUS</facilityNm>
+                  <postalCd>AL</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>TUSCALOOSA</cityNm>
+                  <ptcpntId>12965734</ptcpntId>
+                  <facilityNm>TUSCALOOSA VA MEDICAL CENTER</facilityNm>
+                  <postalCd>AL</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>TUSKEGEE</cityNm>
+                  <ptcpntId>12965735</ptcpntId>
+                  <facilityNm>CENTRAL ALABAMA VHCS EAST CAMPUS</facilityNm>
+                  <postalCd>AL</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>FAYETTEVILLE</cityNm>
+                  <ptcpntId>12965736</ptcpntId>
+                  <facilityNm>FAYETTEVILLE VA MEDICAL CENTER</facilityNm>
+                  <postalCd>AR</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>LITTLE ROCK</cityNm>
+                  <ptcpntId>12965737</ptcpntId>
+                  <facilityNm>JOHN L. MCCLELLAN MEMORIAL VETERANS HOSPITAL</facilityNm>
+                  <postalCd>AR</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>NORTH LITTLE ROCK</cityNm>
+                  <ptcpntId>12965738</ptcpntId>
+                  <facilityNm>EUGENE J. TOWBIN HEALTHCARE CENTER</facilityNm>
+                  <postalCd>AR</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>PRESCOTT</cityNm>
+                  <ptcpntId>12965739</ptcpntId>
+                  <facilityNm>NORTHERN ARIZONA VA HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>AZ</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>TUSCON</cityNm>
+                  <ptcpntId>12965740</ptcpntId>
+                  <facilityNm>SOUTHERN ARIZONA VA HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>AZ</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>PHOENIX</cityNm>
+                  <ptcpntId>12965741</ptcpntId>
+                  <facilityNm>CARL T. HAYDEN VA MEDICAL CENTER</facilityNm>
+                  <postalCd>AZ</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>FRESNO</cityNm>
+                  <ptcpntId>12965742</ptcpntId>
+                  <facilityNm>VA CENTRAL CALIFORNIA HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>CA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>LIVERMORE</cityNm>
+                  <ptcpntId>12965743</ptcpntId>
+                  <facilityNm>LIVERMORE</facilityNm>
+                  <postalCd>CA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>LOMA LINDA</cityNm>
+                  <ptcpntId>12965744</ptcpntId>
+                  <facilityNm>VA LOMA LINDA HEALTHCARE SYSTEM</facilityNm>
+                  <postalCd>CA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>LONG BEACH</cityNm>
+                  <ptcpntId>12965745</ptcpntId>
+                  <facilityNm>VA LONG BEACH HEALTHCARE SYSTEM</facilityNm>
+                  <postalCd>CA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>WEST LOS ANGELES</cityNm>
+                  <ptcpntId>12965746</ptcpntId>
+                  <facilityNm>VA GREATER LOS ANGELES HEALTHCARE SYSTEM (GLA)</facilityNm>
+                  <postalCd>CA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>MENLO PARK</cityNm>
+                  <ptcpntId>12965747</ptcpntId>
+                  <facilityNm>MENLO PARK</facilityNm>
+                  <postalCd>CA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>PALO ALTO</cityNm>
+                  <ptcpntId>12965748</ptcpntId>
+                  <facilityNm>VA PALO ALTO HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>CA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>SACRAMENTO</cityNm>
+                  <ptcpntId>12965749</ptcpntId>
+                  <facilityNm>VA NORTHERN CALIFORNIA HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>CA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>SAN DIEGO</cityNm>
+                  <ptcpntId>12965750</ptcpntId>
+                  <facilityNm>VA SAN DIEGO HEALTHCARE SYSTEM</facilityNm>
+                  <postalCd>CA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>SAN FRANCISCO</cityNm>
+                  <ptcpntId>12965751</ptcpntId>
+                  <facilityNm>SAN FRANCISCO VA MEDICAL CENTER</facilityNm>
+                  <postalCd>CA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>DENVER</cityNm>
+                  <ptcpntId>12965752</ptcpntId>
+                  <facilityNm>VA EASTERN COLORADO HEALTH CARE SYSTEM (ECHCS)</facilityNm>
+                  <postalCd>CO</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>GRAND JUNCTION</cityNm>
+                  <ptcpntId>12965753</ptcpntId>
+                  <facilityNm>GRAND JUNCTION VA MEDICAL CENTER</facilityNm>
+                  <postalCd>CO</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>NEWINGTON</cityNm>
+                  <ptcpntId>12965754</ptcpntId>
+                  <facilityNm>VA CONNECTICUT HEALTHCARE SYSTEM NEWINGTON CAMPUS</facilityNm>
+                  <postalCd>CT</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>WEST HAVEN</cityNm>
+                  <ptcpntId>12965755</ptcpntId>
+                  <facilityNm>VA CONNECTICUT HEALTHCARE SYSTEM WEST HAVEN CAMPUS</facilityNm>
+                  <postalCd>CT</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>WILMINGTON</cityNm>
+                  <ptcpntId>12965756</ptcpntId>
+                  <facilityNm>WILMINGTON VA MEDICAL CENTER</facilityNm>
+                  <postalCd>DE</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>GAINESVILLE</cityNm>
+                  <ptcpntId>12965757</ptcpntId>
+                  <facilityNm>MALCOM RANDALL VAMC, NF/SG VHS</facilityNm>
+                  <postalCd>FL</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>TEMPLE</cityNm>
+                  <ptcpntId>12965758</ptcpntId>
+                  <facilityNm>LAKE CITY VAMC, NF/SG VHS</facilityNm>
+                  <postalCd>FL</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>MIAMI</cityNm>
+                  <ptcpntId>12965759</ptcpntId>
+                  <facilityNm>MIAMI VAMC</facilityNm>
+                  <postalCd>FL</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BAY PINES</cityNm>
+                  <ptcpntId>12965760</ptcpntId>
+                  <facilityNm>BAY PINES VAMC</facilityNm>
+                  <postalCd>FL</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>TAMPA</cityNm>
+                  <ptcpntId>12965761</ptcpntId>
+                  <facilityNm>JAMES A. HALEY VAMC</facilityNm>
+                  <postalCd>FL</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>WEST PALM BEACH</cityNm>
+                  <ptcpntId>12965762</ptcpntId>
+                  <facilityNm>WEST PALM BEACH VAMC</facilityNm>
+                  <postalCd>FL</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>AUGUSTA</cityNm>
+                  <ptcpntId>12965763</ptcpntId>
+                  <facilityNm>AUGUSTA VA MEDICAL CENTER</facilityNm>
+                  <postalCd>GA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>ATLANTA</cityNm>
+                  <ptcpntId>12965764</ptcpntId>
+                  <facilityNm>ATLANTA VA MEDICAL CENTER</facilityNm>
+                  <postalCd>GA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>DUBLIN</cityNm>
+                  <ptcpntId>12965765</ptcpntId>
+                  <facilityNm>CARL VINSON VA MEDICAL CENTER</facilityNm>
+                  <postalCd>GA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>HONOLULU</cityNm>
+                  <ptcpntId>12965766</ptcpntId>
+                  <facilityNm>VA PACIFIC ISLANDS HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>HI</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BOISE</cityNm>
+                  <ptcpntId>12965767</ptcpntId>
+                  <facilityNm>BOISE VA MEDICAL CENTER</facilityNm>
+                  <postalCd>ID</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>CHICAGO</cityNm>
+                  <ptcpntId>12965768</ptcpntId>
+                  <facilityNm>JESSE BROWN VA MEDICAL CENTER</facilityNm>
+                  <postalCd>IL</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>DANVILLE</cityNm>
+                  <ptcpntId>12965769</ptcpntId>
+                  <facilityNm>VA ILLIANA HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>IL</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>HINES</cityNm>
+                  <ptcpntId>12965770</ptcpntId>
+                  <facilityNm>EDWARD HINES JR. VA HOSPITAL</facilityNm>
+                  <postalCd>IL</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>MARION</cityNm>
+                  <ptcpntId>12965771</ptcpntId>
+                  <facilityNm>MARION VA MEDICAL CENTER</facilityNm>
+                  <postalCd>IL</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>NORTH CHICAGO</cityNm>
+                  <ptcpntId>12965772</ptcpntId>
+                  <facilityNm>NORTH CHICAGO VA MEDICAL CENTER</facilityNm>
+                  <postalCd>IL</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>FORT WAYNE</cityNm>
+                  <ptcpntId>12965773</ptcpntId>
+                  <facilityNm>VA NORTHERN INDIANA HCS FORT WAYNE CAMPUS</facilityNm>
+                  <postalCd>IN</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>INDIANAPOLIS</cityNm>
+                  <ptcpntId>12965774</ptcpntId>
+                  <facilityNm>RICHARD L. ROUDEBUSH VA MEDICAL CENTER</facilityNm>
+                  <postalCd>IN</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>MARION</cityNm>
+                  <ptcpntId>12965775</ptcpntId>
+                  <facilityNm>VA NORTHERN INDIANA HCS MARION CAMPUS</facilityNm>
+                  <postalCd>IN</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>DES MOINES</cityNm>
+                  <ptcpntId>12965776</ptcpntId>
+                  <facilityNm>DES MOINES DIVISION - VA CENTRAL IOWA HCS</facilityNm>
+                  <postalCd>IA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>IOWA CITY</cityNm>
+                  <ptcpntId>12965777</ptcpntId>
+                  <facilityNm>IOWA CITY VA MEDICAL CENTER</facilityNm>
+                  <postalCd>IA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>KNOXVILLE</cityNm>
+                  <ptcpntId>12965778</ptcpntId>
+                  <facilityNm>KNOXVILLE DIVISION - VA CENTRAL IOWA HCS</facilityNm>
+                  <postalCd>IA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>LEAVENWORTH</cityNm>
+                  <ptcpntId>12965779</ptcpntId>
+                  <facilityNm>DWIGHT D. EISENHOWER VA MEDICAL CENTER</facilityNm>
+                  <postalCd>KS</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>TOPEKA</cityNm>
+                  <ptcpntId>12965780</ptcpntId>
+                  <facilityNm>COLMERY-O''NEIL VA MEDICAL CENTER</facilityNm>
+                  <postalCd>KS</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>WICHITA</cityNm>
+                  <ptcpntId>12965781</ptcpntId>
+                  <facilityNm>ROBERT J. DOLE VA MEDICAL AND REGIONAL OFFICE CTR</facilityNm>
+                  <postalCd>KS</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>LEXINGTON</cityNm>
+                  <ptcpntId>12965782</ptcpntId>
+                  <facilityNm>LEXINGTON VA MEDICAL CENTER</facilityNm>
+                  <postalCd>KY</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>LOUISVILLE</cityNm>
+                  <ptcpntId>12965783</ptcpntId>
+                  <facilityNm>LOUISVILLE VA MEDICAL CENTER</facilityNm>
+                  <postalCd>KY</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>ALEXANDRIA</cityNm>
+                  <ptcpntId>12965784</ptcpntId>
+                  <facilityNm>ALEXANDRIA VA MEDICAL CENTER</facilityNm>
+                  <postalCd>LA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>NEW ORLEANS</cityNm>
+                  <ptcpntId>12965785</ptcpntId>
+                  <facilityNm>VA MEDICAL CENTER, NEW ORLEANS, LA</facilityNm>
+                  <postalCd>LA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>SHREVEPORT</cityNm>
+                  <ptcpntId>12965786</ptcpntId>
+                  <facilityNm>OVERTON BROOKS VA MEDICAL CENTER</facilityNm>
+                  <postalCd>LA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>TOGUS</cityNm>
+                  <ptcpntId>12965787</ptcpntId>
+                  <facilityNm>TOGUS VA MEDICAL CENTER</facilityNm>
+                  <postalCd>ME</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BALTIMORE</cityNm>
+                  <ptcpntId>12965788</ptcpntId>
+                  <facilityNm>BALTIMORE VAMC - VA MARYLAND HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>MD</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>PERRY POINT</cityNm>
+                  <ptcpntId>12965789</ptcpntId>
+                  <facilityNm>PERRY POINT VAMC - VA MARYLAND HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>MD</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BEDFORD</cityNm>
+                  <ptcpntId>12965790</ptcpntId>
+                  <facilityNm>EDITH NOURSE ROGERS MEMORIAL VETERANS HOSPITAL</facilityNm>
+                  <postalCd>MA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BOSTON</cityNm>
+                  <ptcpntId>12965791</ptcpntId>
+                  <facilityNm>VA BOSTON HEALTHCARE SYSTEM, BROCKTON CAMPUS</facilityNm>
+                  <postalCd>MA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BOSTON - JAMAICA PLAIN CAMPUS</cityNm>
+                  <ptcpntId>12965792</ptcpntId>
+                  <facilityNm>VA BOSTON HEALTHCARE SYSTEM, JAMAICA PLAIN CAMPUS</facilityNm>
+                  <postalCd>MA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>LEEDS</cityNm>
+                  <ptcpntId>12965793</ptcpntId>
+                  <facilityNm>NORTHAMPTON VA MEDICAL CENTER</facilityNm>
+                  <postalCd>MA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BOSTON - WEST ROXBURY CAMPUS</cityNm>
+                  <ptcpntId>12965794</ptcpntId>
+                  <facilityNm>VA BOSTON HEALTHCARE SYSTEM, WEST ROXBURY CAMPUS</facilityNm>
+                  <postalCd>MA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>ANN ARBOR</cityNm>
+                  <ptcpntId>12965795</ptcpntId>
+                  <facilityNm>VA ANN ARBOR HEALTHCARE SYSTEM</facilityNm>
+                  <postalCd>MI</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BATTLE CREEK</cityNm>
+                  <ptcpntId>12965796</ptcpntId>
+                  <facilityNm>BATTLE CREEK VA MEDICAL CENTER</facilityNm>
+                  <postalCd>MI</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>DETROIT</cityNm>
+                  <ptcpntId>12965797</ptcpntId>
+                  <facilityNm>JOHN D. DINGELL VA MEDICAL CENTER</facilityNm>
+                  <postalCd>MI</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>IRON MOUNTAIN</cityNm>
+                  <ptcpntId>12965798</ptcpntId>
+                  <facilityNm>IRON MOUNTAIN VA MEDICAL CENTER</facilityNm>
+                  <postalCd>MI</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>SAGINAW</cityNm>
+                  <ptcpntId>12965799</ptcpntId>
+                  <facilityNm>ALEDA E. LUTZ VA MEDICAL CENTER</facilityNm>
+                  <postalCd>MI</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>ST. CLOUD</cityNm>
+                  <ptcpntId>12965801</ptcpntId>
+                  <facilityNm>ST. CLOUD VA MEDICAL CENTER</facilityNm>
+                  <postalCd>MN</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BILOXI/GULFPORT</cityNm>
+                  <ptcpntId>12965802</ptcpntId>
+                  <facilityNm>VA GULF COAST VETERANS HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>MS</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>JACKSON</cityNm>
+                  <ptcpntId>12965803</ptcpntId>
+                  <facilityNm>G.V. (SONNY) MONTGOMERY VA MEDICAL CENTER</facilityNm>
+                  <postalCd>MS</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>COLUMBIA</cityNm>
+                  <ptcpntId>12965804</ptcpntId>
+                  <facilityNm>HARRY S. TRUMAN MEMORIAL</facilityNm>
+                  <postalCd>MO</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>KANSAS CITY</cityNm>
+                  <ptcpntId>12965805</ptcpntId>
+                  <facilityNm>KANSAS CITY VA MEDICAL CENTER</facilityNm>
+                  <postalCd>MO</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>POPLAR BLUFF</cityNm>
+                  <ptcpntId>12965806</ptcpntId>
+                  <facilityNm>JOHN J. PERSHING  VA MEDICAL CENTER</facilityNm>
+                  <postalCd>MO</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>ST. LOUIS</cityNm>
+                  <ptcpntId>12965807</ptcpntId>
+                  <facilityNm>ST. LOUIS VA MEDICAL CENTER</facilityNm>
+                  <postalCd>MO</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>FORT HARRISON</cityNm>
+                  <ptcpntId>12965808</ptcpntId>
+                  <facilityNm>VA MONTANA HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>MT</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>LINCOLN</cityNm>
+                  <ptcpntId>12965809</ptcpntId>
+                  <facilityNm>GRAND ISLAND DIV VA NEBRASKA WESTERN IOWA HCS</facilityNm>
+                  <postalCd>NE</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>OMAHA</cityNm>
+                  <ptcpntId>12965810</ptcpntId>
+                  <facilityNm>OMAHA DIVISION - VA NEBRASKA WESTERN IOWA HCS</facilityNm>
+                  <postalCd>NE</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>MANCHESTER</cityNm>
+                  <ptcpntId>12965811</ptcpntId>
+                  <facilityNm>MANCHESTER VA MEDICAL CENTER</facilityNm>
+                  <postalCd>NH</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>EAST ORANGE</cityNm>
+                  <ptcpntId>12965812</ptcpntId>
+                  <facilityNm>EAST ORANGE CAMPUS VA NEW JERSEY HCS</facilityNm>
+                  <postalCd>NJ</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>LYONS</cityNm>
+                  <ptcpntId>12965813</ptcpntId>
+                  <facilityNm>LYONS CAMPUS VA NEW JERSEY HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>NJ</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>ALBUQUERQUE</cityNm>
+                  <ptcpntId>12965814</ptcpntId>
+                  <facilityNm>NEW MEXICO VA HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>NM</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>ALBANY</cityNm>
+                  <ptcpntId>12965815</ptcpntId>
+                  <facilityNm>ALBANY VA MEDICAL CENTER: SAMUEL S. STRATTON</facilityNm>
+                  <postalCd>NY</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BATAVIA</cityNm>
+                  <ptcpntId>12965816</ptcpntId>
+                  <facilityNm>VA WESTERN NEW YORK HEALTHCARE SYSTEM AT BATAVIA</facilityNm>
+                  <postalCd>NY</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BATH</cityNm>
+                  <ptcpntId>12965817</ptcpntId>
+                  <facilityNm>BATH VA MEDICAL CENTER</facilityNm>
+                  <postalCd>NY</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BRONX</cityNm>
+                  <ptcpntId>12965818</ptcpntId>
+                  <facilityNm>BRONX VA MEDICAL CENTER</facilityNm>
+                  <postalCd>NY</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BROOKLYN</cityNm>
+                  <ptcpntId>12965819</ptcpntId>
+                  <facilityNm>BROOKLYN CAMPUS VA NY HARBOR HCS</facilityNm>
+                  <postalCd>NY</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BUFFALO</cityNm>
+                  <ptcpntId>12965820</ptcpntId>
+                  <facilityNm>VA WESTERN NEW YORK HEALTHCARE SYSTEM AT BUFFALO</facilityNm>
+                  <postalCd>NY</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>CANANDAIGUA</cityNm>
+                  <ptcpntId>12965821</ptcpntId>
+                  <facilityNm>CANANDAIGUA VA MEDICAL CENTER</facilityNm>
+                  <postalCd>NY</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>CASTLE POINT</cityNm>
+                  <ptcpntId>12965822</ptcpntId>
+                  <facilityNm>CASTLE POINT CAMPUS VA HUDSON VALLEY HCS</facilityNm>
+                  <postalCd>NY</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>MONTROSE</cityNm>
+                  <ptcpntId>12965823</ptcpntId>
+                  <facilityNm>FRANKLIN D. ROOSEVELT CAMPUS VA HUDSON VALLEY HCS</facilityNm>
+                  <postalCd>NY</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>NEW YORK</cityNm>
+                  <ptcpntId>12965824</ptcpntId>
+                  <facilityNm>NEW YORK CAMPUS VA NY HARBOR HEALTHCARE SYSTEM</facilityNm>
+                  <postalCd>NY</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>NORTHPORT</cityNm>
+                  <ptcpntId>12965825</ptcpntId>
+                  <facilityNm>NORTHPORT VA MEDICAL CENTER</facilityNm>
+                  <postalCd>NY</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>SYRACUSE</cityNm>
+                  <ptcpntId>12965826</ptcpntId>
+                  <facilityNm>SYRACUSE VA MEDICAL CENTER</facilityNm>
+                  <postalCd>NY</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>LAS VEGAS</cityNm>
+                  <ptcpntId>12965827</ptcpntId>
+                  <facilityNm>VA SOUTHERN NEVADA HEALTHCARE SYSTEM (VASNHS)</facilityNm>
+                  <postalCd>NV</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>RENO</cityNm>
+                  <ptcpntId>12965828</ptcpntId>
+                  <facilityNm>VA SIERRA NEVADA HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>NV</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>ASHEVILLE</cityNm>
+                  <ptcpntId>12965829</ptcpntId>
+                  <facilityNm>ASHEVILLE VA MEDICAL CENTER</facilityNm>
+                  <postalCd>NC</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>DURHAM</cityNm>
+                  <ptcpntId>12965830</ptcpntId>
+                  <facilityNm>DURHAM VA MEDICAL CENTER</facilityNm>
+                  <postalCd>NC</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>FAYETTEVILLE</cityNm>
+                  <ptcpntId>12965831</ptcpntId>
+                  <facilityNm>FAYETTEVILLE VA MEDICAL CENTER</facilityNm>
+                  <postalCd>NC</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>SALISBURY</cityNm>
+                  <ptcpntId>12965832</ptcpntId>
+                  <facilityNm>SALISBURY - W.G. (BILL) HEFNER VA MEDICAL CENTER</facilityNm>
+                  <postalCd>NC</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>FARGO</cityNm>
+                  <ptcpntId>12965833</ptcpntId>
+                  <facilityNm>FARGO VA MEDICAL/REGIONAL OFFICE CENTER</facilityNm>
+                  <postalCd>ND</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>CHILLICOTHE</cityNm>
+                  <ptcpntId>12965834</ptcpntId>
+                  <facilityNm>CHILLICOTHE VA MEDICAL CENTER</facilityNm>
+                  <postalCd>OH</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>CINCINNATI</cityNm>
+                  <ptcpntId>12965835</ptcpntId>
+                  <facilityNm>CINCINNATI VA MEDICAL CENTER</facilityNm>
+                  <postalCd>OH</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>CLEVELAND</cityNm>
+                  <ptcpntId>12965836</ptcpntId>
+                  <facilityNm>LOUIS STOKES VA MEDICAL CENTER</facilityNm>
+                  <postalCd>OH</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>DAYTON</cityNm>
+                  <ptcpntId>12965837</ptcpntId>
+                  <facilityNm>DAYTON VA MEDICAL CENTER</facilityNm>
+                  <postalCd>OH</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>MUSKOGEE</cityNm>
+                  <ptcpntId>12965838</ptcpntId>
+                  <facilityNm>MUSKOGEE VA MEDICAL CENTER</facilityNm>
+                  <postalCd>OK</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>OKLAHOMA CITY</cityNm>
+                  <ptcpntId>12965839</ptcpntId>
+                  <facilityNm>OKLAHOMA CITY VA MEDICAL CENTER</facilityNm>
+                  <postalCd>OK</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>PORTLAND</cityNm>
+                  <ptcpntId>12965840</ptcpntId>
+                  <facilityNm>PORTLAND VA MEDICAL CENTER</facilityNm>
+                  <postalCd>OR</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>ROSEBURG</cityNm>
+                  <ptcpntId>12965841</ptcpntId>
+                  <facilityNm>VA ROSEBURG HEALTHCARE SYSTEM</facilityNm>
+                  <postalCd>OR</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>ALTOONA</cityNm>
+                  <ptcpntId>12965842</ptcpntId>
+                  <facilityNm>JAMES E. VAN ZANDT VA MEDICAL CENTER - ALTOONA</facilityNm>
+                  <postalCd>PA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BUTLER</cityNm>
+                  <ptcpntId>12965843</ptcpntId>
+                  <facilityNm>BUTLER VA MEDICAL CENTER</facilityNm>
+                  <postalCd>PA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>COATESVILLE</cityNm>
+                  <ptcpntId>12965844</ptcpntId>
+                  <facilityNm>COATESVILLE VA MEDICAL CENTER</facilityNm>
+                  <postalCd>PA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>ERIE</cityNm>
+                  <ptcpntId>12965845</ptcpntId>
+                  <facilityNm>ERIE VA MEDICAL CENTER</facilityNm>
+                  <postalCd>PA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>LEBANON</cityNm>
+                  <ptcpntId>12965846</ptcpntId>
+                  <facilityNm>LEBANON VA MEDICAL CENTER</facilityNm>
+                  <postalCd>PA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>PHILADELPHIA</cityNm>
+                  <ptcpntId>12965847</ptcpntId>
+                  <facilityNm>PHILADELPHIA VA MEDICAL CENTER</facilityNm>
+                  <postalCd>PA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>PITTSBURGH</cityNm>
+                  <ptcpntId>12965848</ptcpntId>
+                  <facilityNm>H. JOHN HEINZ III PROGRESSIVE CARE CENTER</facilityNm>
+                  <postalCd>PA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>PITTSBURGH-HIGHLAND DRIVE</cityNm>
+                  <ptcpntId>12965849</ptcpntId>
+                  <facilityNm>VA PITTSBURGH HCS HIGHLAND DRIVE DIVISION</facilityNm>
+                  <postalCd>PA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>PITTSBURGH-UNIVERSITY DRIVE</cityNm>
+                  <ptcpntId>12965850</ptcpntId>
+                  <facilityNm>VA PITTSBURGH HCS UNIVERSITY DRIVE DIVISION</facilityNm>
+                  <postalCd>PA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>WILKES-BARRE</cityNm>
+                  <ptcpntId>12965851</ptcpntId>
+                  <facilityNm>WILKES-BARRE VA MEDICAL CENTER</facilityNm>
+                  <postalCd>PA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>PROVIDENCE</cityNm>
+                  <ptcpntId>12965852</ptcpntId>
+                  <facilityNm>PROVIDENCE VA MEDICAL CENTER</facilityNm>
+                  <postalCd>RI</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>CHARLESTON</cityNm>
+                  <ptcpntId>12965853</ptcpntId>
+                  <facilityNm>RALPH H. JOHNSON VA MEDICAL CENTER</facilityNm>
+                  <postalCd>SC</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>COLUMBIA</cityNm>
+                  <ptcpntId>12965854</ptcpntId>
+                  <facilityNm>WM. JENNINGS BRYAN DORN VA MEDICAL CENTER</facilityNm>
+                  <postalCd>SC</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>FORT MEADE</cityNm>
+                  <ptcpntId>12965855</ptcpntId>
+                  <facilityNm>VA BLACK HILLS HCS FORT MEADE CAMPUS</facilityNm>
+                  <postalCd>SD</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>HOT SPRINGS</cityNm>
+                  <ptcpntId>12965856</ptcpntId>
+                  <facilityNm>VA BLACK HILLS HCS HOT SPRINGS CAMPUS</facilityNm>
+                  <postalCd>SD</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>SIOUX FALLS</cityNm>
+                  <ptcpntId>12965857</ptcpntId>
+                  <facilityNm>SIOUX FALLS VA MEDICAL/REGIONAL OFFICE CENTER</facilityNm>
+                  <postalCd>SD</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>MEMPHIS</cityNm>
+                  <ptcpntId>12965858</ptcpntId>
+                  <facilityNm>VAMC MEMPHIS, TENNESSEE</facilityNm>
+                  <postalCd>TN</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>MOUNTAIN HOME</cityNm>
+                  <ptcpntId>12965859</ptcpntId>
+                  <facilityNm>MOUNTAIN HOME VA MEDICAL CENTER</facilityNm>
+                  <postalCd>TN</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>MURFREESBORO</cityNm>
+                  <ptcpntId>12965860</ptcpntId>
+                  <facilityNm>TENNESSEE VALLEY HCS ALVIN C. YORK CAMPUS</facilityNm>
+                  <postalCd>TN</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>NASHVILLE</cityNm>
+                  <ptcpntId>12965861</ptcpntId>
+                  <facilityNm>TENNESSEE VALLEY HCS NASHVILLE CAMPUS</facilityNm>
+                  <postalCd>TN</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>AMARILLO</cityNm>
+                  <ptcpntId>12965862</ptcpntId>
+                  <facilityNm>AMARILLO VA HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>TX</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BIG SPRING</cityNm>
+                  <ptcpntId>12965863</ptcpntId>
+                  <facilityNm>WEST TEXAS VA HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>TX</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>EL PASO</cityNm>
+                  <ptcpntId>12965864</ptcpntId>
+                  <facilityNm>EL PASO VA HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>TX</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>SAN ANTONIO</cityNm>
+                  <ptcpntId>12965865</ptcpntId>
+                  <facilityNm>SOUTH TEXAS VETERANS HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>TX</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>TEMPLE</cityNm>
+                  <ptcpntId>12965866</ptcpntId>
+                  <facilityNm>CENTRAL TEXAS VETERANS HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>TX</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>SALT LAKE CITY</cityNm>
+                  <ptcpntId>12965867</ptcpntId>
+                  <facilityNm>VA SALT LAKE CITY HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>UT</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>WHITE RIVER JUNCTION</cityNm>
+                  <ptcpntId>12965868</ptcpntId>
+                  <facilityNm>WHITE RIVER JUNCTION VA MEDICAL & RO CENTER</facilityNm>
+                  <postalCd>VT</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>HAMPTON</cityNm>
+                  <ptcpntId>12965869</ptcpntId>
+                  <facilityNm>HAMPTON VA MEDICAL CENTER</facilityNm>
+                  <postalCd>VA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>RICHMOND</cityNm>
+                  <ptcpntId>12965870</ptcpntId>
+                  <facilityNm>HUNTER HOLMES MCGUIRE VA MEDICAL CENTER</facilityNm>
+                  <postalCd>VA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>SALEM</cityNm>
+                  <ptcpntId>12965871</ptcpntId>
+                  <facilityNm>SALEM VA MEDICAL CENTER</facilityNm>
+                  <postalCd>VA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>SEATTLE</cityNm>
+                  <ptcpntId>12965872</ptcpntId>
+                  <facilityNm>VA PUGET SOUND HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>WA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>SPOKANE</cityNm>
+                  <ptcpntId>12965873</ptcpntId>
+                  <facilityNm>SPOKANE VA MEDICAL CENTER</facilityNm>
+                  <postalCd>WA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>WALLA WALLA</cityNm>
+                  <ptcpntId>12965874</ptcpntId>
+                  <facilityNm>JONATHAN M. WAINWRIGHT MEMORIAL VA MEDICAL CENTER</facilityNm>
+                  <postalCd>WA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BECKLEY</cityNm>
+                  <ptcpntId>12965875</ptcpntId>
+                  <facilityNm>BECKLEY VA MEDICAL CENTER</facilityNm>
+                  <postalCd>WV</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>CLARKSBURG</cityNm>
+                  <ptcpntId>12965876</ptcpntId>
+                  <facilityNm>LOUIS A. JOHNSON VA MEDICAL CENTER</facilityNm>
+                  <postalCd>WV</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>HUNTINGTON</cityNm>
+                  <ptcpntId>12965877</ptcpntId>
+                  <facilityNm>HUNTINGTON VA MEDICAL CENTER</facilityNm>
+                  <postalCd>WV</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>MARTINSBURG</cityNm>
+                  <ptcpntId>12965878</ptcpntId>
+                  <facilityNm>MARTINSBURG VA MEDICAL CENTER</facilityNm>
+                  <postalCd>WV</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>MADISON</cityNm>
+                  <ptcpntId>12965879</ptcpntId>
+                  <facilityNm>WILLIAM S. MIDDLETON MEMORIAL VETERANS HOSPITAL</facilityNm>
+                  <postalCd>WI</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>MILWAUKEE</cityNm>
+                  <ptcpntId>12965880</ptcpntId>
+                  <facilityNm>CLEMENT J. ZABLOCKI VA MEDICAL CENTER</facilityNm>
+                  <postalCd>WI</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>TOMAH</cityNm>
+                  <ptcpntId>12965881</ptcpntId>
+                  <facilityNm>TOMAH VA MEDICAL CENTER</facilityNm>
+                  <postalCd>WI</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>CHEYENNE</cityNm>
+                  <ptcpntId>12965882</ptcpntId>
+                  <facilityNm>CHEYENNE VA MEDICAL / REGIONAL OFFICE CENTER</facilityNm>
+                  <postalCd>WY</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>SHERIDAN</cityNm>
+                  <ptcpntId>12965883</ptcpntId>
+                  <facilityNm>SHERIDAN VA MEDICAL CENTER</facilityNm>
+                  <postalCd>WY</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>WASHINGTON</cityNm>
+                  <ptcpntId>12965884</ptcpntId>
+                  <facilityNm>WASHINGTON DC VA MEDICAL CENTER</facilityNm>
+                  <postalCd>DC</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>SAN JUAN</cityNm>
+                  <ptcpntId>12965885</ptcpntId>
+                  <facilityNm>SAN JUAN VAMC</facilityNm>
+                  <postalCd>PR</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BONHAM</cityNm>
+                  <ptcpntId>12965886</ptcpntId>
+                  <facilityNm>SAM RAYBURN MEMORIAL VETERANS CENTER</facilityNm>
+                  <postalCd>TX</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>DALLAS</cityNm>
+                  <ptcpntId>12965887</ptcpntId>
+                  <facilityNm>DALLAS VA MEDICAL CENTER</facilityNm>
+                  <postalCd>TX</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>HOUSTON</cityNm>
+                  <ptcpntId>12965888</ptcpntId>
+                  <facilityNm>HOUSTON VA MEDICAL CENTER</facilityNm>
+                  <postalCd>TX</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>KERRVILLE</cityNm>
+                  <ptcpntId>12965889</ptcpntId>
+                  <facilityNm>KERRVILLE VA MEDICAL CENTER</facilityNm>
+                  <postalCd>TX</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>WACO</cityNm>
+                  <ptcpntId>12965890</ptcpntId>
+                  <facilityNm>WACO VA MEDICAL CENTER</facilityNm>
+                  <postalCd>TX</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>MARTINEZ</cityNm>
+                  <ptcpntId>13391625,
+                  <facilityNm>MARTINEZ, CA</facilityNm>
+                  <postalCd>CA</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>WHITE CITY</cityNm>
+                  <ptcpntId>13391628</ptcpntId>
+                  <facilityNm>WHITE CITY, OR</facilityNm>
+            </ptcpntId>     <postalCd>OR</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>MANILA</cityNm>
+                  <ptcpntId>13391629</ptcpntId>
+                  <facilityNm>MANILA, PI</facilityNm>
+                  <postalCd>PI</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>Orlando</cityNm>
+                  <ptcpntId>600029581</ptcpntId>
+                  <facilityNm>ORLANDO VA MEDICAL CENTER</facilityNm>
+                  <postalCd>FL</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>Bonham</cityNm>
+                  <ptcpntId>600113316</ptcpntId>
+                  <facilityNm>VA NORTH TEXAS HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>TX</postalCd>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>HARLINGEN</cityNm>
+                  <ptcpntId>600113317</ptcpntId>
+                  <facilityNm>VA TEXAS VALLEY COASTAL BEND HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>TX</postalCd>
+               </ns3:MedicalTreatmentFacility>
+            </MedicalTreatmentFacilityList>
+         </ns3:MedicalTreatmentFacilityListReturn>
+      </ns2:getVAMedicalTreatmentFacilityListResponse>
+   <!-- /S:Body>
+</S:Envelope -->
