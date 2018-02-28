@@ -1,5 +1,5 @@
-### vetsapi-refdata ###
-vetsapi-refdata*.log
+### vetservices ###
+vetservices*.log
 
 ### Maven ###
 target/
