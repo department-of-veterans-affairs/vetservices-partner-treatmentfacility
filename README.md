@@ -4,10 +4,9 @@ This repository contains the VetServices Partner Client project for Medical Trea
 
 # Overview - VetServices Partner TreatmentFacility
 
-This project is a component JAR used to access shared data. Include it in your project.
+This project is a component JAR used to access treatment facility data. Include it in your project.
 
 ## Using the JAR
-
 Include the JAR in your dependencies, and access functionality through the TreatmentFacilityWsClient interface.
 
 # Requests and Contributions

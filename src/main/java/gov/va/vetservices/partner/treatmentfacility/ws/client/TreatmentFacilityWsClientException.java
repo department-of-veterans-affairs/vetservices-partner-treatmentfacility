@@ -3,14 +3,12 @@ package gov.va.vetservices.partner.treatmentfacility.ws.client;
 import gov.va.ascent.framework.exception.AscentRuntimeException;
 
 /**
- * Root hierarchy of exceptions which indicates there was an exception/error in
- * the TreatmentFacility web service
- *
- * @author vgadda
+ * Root exceptions which indicates an exception/error in the
+ * TreatmentFacilityWsClient web service
  */
 public class TreatmentFacilityWsClientException extends AscentRuntimeException {
 
-	/** The Constant serialVersionUID. */
+	/** Generated serialVersionUID. */
 	private static final long serialVersionUID = -7282496605582623526L;
 
 	/**

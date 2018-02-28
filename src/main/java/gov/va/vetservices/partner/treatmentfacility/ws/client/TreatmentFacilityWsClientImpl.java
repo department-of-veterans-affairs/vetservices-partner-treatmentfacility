@@ -17,14 +17,11 @@ import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedi
 /**
  * Spring Web Service based implementation of the TreatmentFacility
  * interface
- *
- * @author vgadda
- *
  */
 @Component(TreatmentFacilityWsClientImpl.BEAN_NAME)
 public class TreatmentFacilityWsClientImpl extends BaseWsClientImpl implements TreatmentFacilityWsClient {
 
-	/** The Constant BEAN_NAME. */
+	/** A constant representing the Spring Bean name. */
 	public static final String BEAN_NAME = "treatmentFacilityWsClient";
 
 	/** the switchable remote for service calls (impl or mock) */
@@ -32,7 +29,7 @@ public class TreatmentFacilityWsClientImpl extends BaseWsClientImpl implements T
 	@Qualifier(TreatmentFacilityRemoteServiceCallImpl.BEAN_NAME)
 	private RemoteServiceCall remoteServiceCall;
 
-	/** axiom web service template for treatmentFacility service */
+	/** axiom web service template */
 	@Autowired
 	@Qualifier("treatmentFacilityWsClientAxiomTemplate")
 	private WebServiceTemplate treatmentFacilityWsTemplate;
@@ -52,7 +49,7 @@ public class TreatmentFacilityWsClientImpl extends BaseWsClientImpl implements T
 	 * Get a list of treatment facilities from the partner.
 	 * </p>
 	 * <p>
-	 * The RemoteServiceCall implementation is selected by the current spring profile. REMOTE_CLIENT_IMPLS
+	 * The RemoteServiceCall implementation is selected by the current spring profile.
 	 * <ul>
 	 * <li>PROFILE_REMOTE_CLIENT_IMPLS instantiates RemoteServiceCallImpl</li>
 	 * <li>PROFILE_REMOTE_CLIENT_SIMULATORS instantiates RemoteServiceCallMock</li>
