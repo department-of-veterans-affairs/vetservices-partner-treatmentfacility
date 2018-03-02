@@ -828,7 +828,7 @@
                <ns3:MedicalTreatmentFacility>
                   <cityNm>WHITE RIVER JUNCTION</cityNm>
                   <ptcpntId>12965868</ptcpntId>
-                  <facilityNm>WHITE RIVER JUNCTION VA MEDICAL & RO CENTER</facilityNm>
+                  <facilityNm>WHITE RIVER JUNCTION VA MEDICAL &amp; RO CENTER</facilityNm>
                   <postalCd>VT</postalCd>
                </ns3:MedicalTreatmentFacility>
                <ns3:MedicalTreatmentFacility>
