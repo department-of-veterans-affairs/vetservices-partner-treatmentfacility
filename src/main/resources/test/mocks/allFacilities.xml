@@ -1,6 +1,6 @@
 <!-- S:Envelope xmlns:S=</postalCd>http://schemas.xmlsoap.org/soap/envelope/</postalCd>>
    <S:Body -->
-      <ns2:getVAMedicalTreatmentFacilityListResponse xmlns:ns2=</postalCd>http://gov.va.vba.benefits.vdc/services</postalCd> xmlns:ns3=</postalCd>http://gov.va.vba.benefits.vdc/data</postalCd> xmlns:ns4=</postalCd>http://gov.va.vba.benefits.vdc/webfault</postalCd>>
+      <ns2:getVAMedicalTreatmentFacilityListResponse xmlns:ns2="http://gov.va.vba.benefits.vdc/services" xmlns:ns3="http://gov.va.vba.benefits.vdc/data" xmlns:ns4="http://gov.va.vba.benefits.vdc/webfault">
          <ns3:MedicalTreatmentFacilityListReturn>
             <MedicalTreatmentFacilityList>
                <ns3:MedicalTreatmentFacility>
@@ -965,7 +965,7 @@
                </ns3:MedicalTreatmentFacility>
                <ns3:MedicalTreatmentFacility>
                   <cityNm>MARTINEZ</cityNm>
-                  <ptcpntId>13391625,
+                  <ptcpntId>13391625,</ptcpntId>
                   <facilityNm>MARTINEZ, CA</facilityNm>
                   <postalCd>CA</postalCd>
                </ns3:MedicalTreatmentFacility>
@@ -973,7 +973,7 @@
                   <cityNm>WHITE CITY</cityNm>
                   <ptcpntId>13391628</ptcpntId>
                   <facilityNm>WHITE CITY, OR</facilityNm>
-            </ptcpntId>     <postalCd>OR</postalCd>
+           		  <postalCd>OR</postalCd>
                </ns3:MedicalTreatmentFacility>
                <ns3:MedicalTreatmentFacility>
                   <cityNm>MANILA</cityNm>
