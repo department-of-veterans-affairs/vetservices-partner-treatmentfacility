@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.ws.client.core.WebServiceTemplate;
 
 import gov.va.ascent.framework.config.AscentCommonSpringProfiles;
-import gov.va.ascent.framework.transfer.AbstractTransferObject;
+import gov.va.ascent.framework.transfer.PartnerTransferObjectMarker;
 import gov.va.ascent.framework.ws.client.remote.RemoteServiceCall;
 
 /**
@@ -19,10 +19,11 @@ public class TreatmentFacilityRemoteServiceCallImpl implements RemoteServiceCall
 	public static final String BEAN_NAME = "treatmentFacilityRemoteServiceCall";
 
 	@Override
-	public AbstractTransferObject callRemoteService(final WebServiceTemplate webserviceTemplate, final AbstractTransferObject request,
-			final Class<? extends AbstractTransferObject> requestClass) {
+	public PartnerTransferObjectMarker callRemoteService(final WebServiceTemplate webserviceTemplate,
+			final PartnerTransferObjectMarker request,
+			final Class<? extends PartnerTransferObjectMarker> requestClass) {
 
-		return (AbstractTransferObject) webserviceTemplate.marshalSendAndReceive(requestClass.cast(request));
+		return (PartnerTransferObjectMarker) webserviceTemplate.marshalSendAndReceive(requestClass.cast(request));
 	}
 
 }

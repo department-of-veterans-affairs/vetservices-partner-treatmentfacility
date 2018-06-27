@@ -31,7 +31,7 @@ import org.springframework.xml.transform.StringResult;
 import org.springframework.xml.transform.StringSource;
 
 import gov.va.ascent.framework.config.AscentCommonSpringProfiles;
-import gov.va.ascent.framework.transfer.AbstractTransferObject;
+import gov.va.ascent.framework.transfer.PartnerTransferObjectMarker;
 import gov.va.ascent.framework.util.Defense;
 import gov.va.ascent.framework.ws.client.remote.AbstractRemoteServiceCallMock;
 import gov.va.vetservices.partner.treatmentfacility.ws.client.AbstractTreatmentFacilityTest;
@@ -44,13 +44,14 @@ import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedi
 @TestExecutionListeners(inheritListeners = false, listeners = { DependencyInjectionTestExecutionListener.class,
 		DirtiesContextTestExecutionListener.class, TransactionalTestExecutionListener.class })
 @ActiveProfiles({ AscentCommonSpringProfiles.PROFILE_REMOTE_CLIENT_SIMULATORS })
-@ContextConfiguration(inheritLocations = false, classes = { PartnerMockFrameworkTestConfig.class, TreatmentFacilityWsClientConfig.class })
+@ContextConfiguration(inheritLocations = false,
+		classes = { PartnerMockFrameworkTestConfig.class, TreatmentFacilityWsClientConfig.class })
 public class RemoteServiceCallImplTest extends AbstractTreatmentFacilityTest {
 
 	private final static String TEST_VALID_CODE = "VA";
 
 	/** Specifically the IMPL class for the RemoteServiceCall interface */
-	private TreatmentFacilityRemoteServiceCallImpl callPartnerService = new TreatmentFacilityRemoteServiceCallImpl();
+	private final TreatmentFacilityRemoteServiceCallImpl callPartnerService = new TreatmentFacilityRemoteServiceCallImpl();
 
 	private MockWebServiceServer mockWebServicesServer;
 
@@ -71,7 +72,7 @@ public class RemoteServiceCallImplTest extends AbstractTreatmentFacilityTest {
 	public void testCallRemoteService() {
 		// call the impl declared by the current @ActiveProfiles
 
-		GetVAMedicalTreatmentFacilityList request = makeRequest(TEST_VALID_CODE);
+		final GetVAMedicalTreatmentFacilityList request = makeRequest(TEST_VALID_CODE);
 		final Source requestPayload = marshalMockRequest((Jaxb2Marshaller) axiomWebServiceTemplate.getMarshaller(), request,
 				request.getClass());
 		final Source responsePayload = readMockResponseByKey(request.getStateCd());
@@ -81,7 +82,7 @@ public class RemoteServiceCallImplTest extends AbstractTreatmentFacilityTest {
 		/* attempt to call partner will ALWAYS fail - test for specific exception classes */
 		try {
 			callPartnerService
-			.callRemoteService(axiomWebServiceTemplate, request, GetVAMedicalTreatmentFacilityList.class);
+					.callRemoteService(axiomWebServiceTemplate, request, GetVAMedicalTreatmentFacilityList.class);
 
 			mockWebServicesServer.verify();
 
@@ -94,12 +95,13 @@ public class RemoteServiceCallImplTest extends AbstractTreatmentFacilityTest {
 
 	/**
 	 * Exact copy of the
+	 * 
 	 * @param marshaller
 	 * @param request
 	 * @param requestClass
 	 * @return
 	 */
-	private StringSource marshalMockRequest(final Jaxb2Marshaller marshaller, final AbstractTransferObject request,
+	private StringSource marshalMockRequest(final Jaxb2Marshaller marshaller, final PartnerTransferObjectMarker request,
 			final Class<?> requestClass) {
 		final StringResult result = new StringResult();
 		marshaller.marshal(requestClass.cast(request), result);
@@ -108,6 +110,7 @@ public class RemoteServiceCallImplTest extends AbstractTreatmentFacilityTest {
 
 	/**
 	 * Request payload creation specific to this endpoint operation test.
+	 * 
 	 * @param keyPath
 	 * @return
 	 */
@@ -117,11 +120,12 @@ public class RemoteServiceCallImplTest extends AbstractTreatmentFacilityTest {
 		// read the resource
 		ResourceSource resource = null;
 		try {
-			resource = new ResourceSource(new ClassPathResource(MessageFormat.format(AbstractRemoteServiceCallMock.MOCK_FILENAME_TEMPLATE, keyPath)));
+			resource = new ResourceSource(
+					new ClassPathResource(MessageFormat.format(AbstractRemoteServiceCallMock.MOCK_FILENAME_TEMPLATE, keyPath)));
 		} catch (final IOException e) {
-			throw new TreatmentFacilityWsClientException(("Could not read mock XML file '"
+			throw new TreatmentFacilityWsClientException("Could not read mock XML file '"
 					+ MessageFormat.format(AbstractRemoteServiceCallMock.MOCK_FILENAME_TEMPLATE, keyPath)
-					+ "' using key '" + keyPath + "'. Please make sure this response file exists in the main/resources directory."), e);
+					+ "' using key '" + keyPath + "'. Please make sure this response file exists in the main/resources directory.", e);
 		}
 		return resource;
 	}
