@@ -54,7 +54,6 @@ public class RemoteServiceCallMockTest extends AbstractTreatmentFacilityTest {
 		try {
 			keyForMockResponse = mock.getKeyForMockResponse(request);
 		} catch (Throwable e) {
-			e.printStackTrace();
 			assertTrue("Invalid excepetion was thrown.", IllegalArgumentException.class.equals(e.getClass()));
 			assertTrue("Exception message contains wrong string.",
 					e.getMessage().equals(TreatmentFacilityRemoteServiceCallMock.ERROR_NULL_REQUEST));

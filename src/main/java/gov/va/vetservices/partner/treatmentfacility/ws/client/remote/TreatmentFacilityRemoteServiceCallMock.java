@@ -27,7 +27,7 @@ public class TreatmentFacilityRemoteServiceCallMock extends AbstractRemoteServic
 	private static final String ALL_FACILITIES = "allFacilities";
 
 	/** error for null request */
-	static final String ERROR_NULL_REQUEST = "getKeyForMockResponse request parameter cannont be null.";
+	static final String ERROR_NULL_REQUEST = "getKeyForMockResponse request parameter cannot be null.";
 
 	/*
 	 * (non-Javadoc)
