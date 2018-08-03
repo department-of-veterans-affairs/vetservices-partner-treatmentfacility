@@ -14,7 +14,7 @@
 
 	<groupId>gov.va.vetservices.partner</groupId>
 	<artifactId>vetservices-partner-treatmentfacility</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<name>${project.artifactId}</name>
 	<description>VetServices Medical Treatment Facility partner client</description>
 
