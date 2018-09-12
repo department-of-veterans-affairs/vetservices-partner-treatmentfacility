@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>gov.va.ascent</groupId>
 		<artifactId>ascent-libraries-parent</artifactId>
-		<version>0.0.5</version>
+		<version>0.0.6-SNAPSHOT</version>
 	</parent>
 
 	<groupId>gov.va.vetservices.partner</groupId>
@@ -35,7 +35,7 @@
 		<dependency>
 			<groupId>gov.va.ascent</groupId>
 			<artifactId>ascent-framework</artifactId>
-			<version>0.0.7</version>
+			<version>0.0.8</version>
 		</dependency>
 
 		<!-- Apache Commons project dependencies -->
