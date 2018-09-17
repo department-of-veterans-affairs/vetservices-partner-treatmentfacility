@@ -1,5 +1,8 @@
 package gov.va.vetservices.partner.treatmentfacility.ws.client.remote;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.ws.client.core.WebServiceTemplate;
@@ -14,6 +17,7 @@ import gov.va.ascent.framework.ws.client.remote.RemoteServiceCall;
 @Profile(AscentCommonSpringProfiles.PROFILE_REMOTE_CLIENT_IMPLS)
 @Component(TreatmentFacilityRemoteServiceCallImpl.BEAN_NAME)
 public class TreatmentFacilityRemoteServiceCallImpl implements RemoteServiceCall {
+	private static final Logger LOGGER = LoggerFactory.getLogger(TreatmentFacilityRemoteServiceCallImpl.class);
 
 	/** The spring bean name for implementation. MUST BE UNIQUE ACROSS ALL PARTNER JARS */
 	public static final String BEAN_NAME = "treatmentFacilityRemoteServiceCall";
@@ -23,7 +27,18 @@ public class TreatmentFacilityRemoteServiceCallImpl implements RemoteServiceCall
 			final PartnerTransferObjectMarker request,
 			final Class<? extends PartnerTransferObjectMarker> requestClass) {
 
-		return (PartnerTransferObjectMarker) webserviceTemplate.marshalSendAndReceive(requestClass.cast(request));
+		PartnerTransferObjectMarker response = null;
+
+		try {
+			LOGGER.info("Calling partner SOAP service with request " + ReflectionToStringBuilder.toString(request));
+			response = (PartnerTransferObjectMarker) webserviceTemplate.marshalSendAndReceive(requestClass.cast(request));
+		} catch (Exception e) {
+			LOGGER.error("IMPL partner service call failed with requestClass "
+					+ requestClass.getName() + " and request object " + ReflectionToStringBuilder.toString(request), e);
+			throw e;
+		}
+
+		return response;
 	}
 
 }

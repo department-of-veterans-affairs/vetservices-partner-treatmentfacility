@@ -1,6 +1,9 @@
 package gov.va.vetservices.partner.treatmentfacility.ws.client.remote;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.ws.client.core.WebServiceTemplate;
@@ -22,6 +25,7 @@ import gov.va.vetservices.partner.treatmentfacility.ws.client.transfer.GetVAMedi
 @Profile(AscentCommonSpringProfiles.PROFILE_REMOTE_CLIENT_SIMULATORS)
 @Component(TreatmentFacilityRemoteServiceCallImpl.BEAN_NAME)
 public class TreatmentFacilityRemoteServiceCallMock extends AbstractRemoteServiceCallMock {
+	private static final Logger LOGGER = LoggerFactory.getLogger(TreatmentFacilityRemoteServiceCallMock.class);
 
 	/** default mock data if stateCode is null or empty */
 	private static final String ALL_FACILITIES = "allFacilities";
@@ -40,6 +44,8 @@ public class TreatmentFacilityRemoteServiceCallMock extends AbstractRemoteServic
 			final PartnerTransferObjectMarker request,
 			final Class<? extends PartnerTransferObjectMarker> requestClass) {
 
+		LOGGER.info("Calling MOCK service with request " + ReflectionToStringBuilder.toString(request));
+		// super handles exceptions
 		return super.callMockService(webserviceTemplate, request, requestClass);
 	}
 
