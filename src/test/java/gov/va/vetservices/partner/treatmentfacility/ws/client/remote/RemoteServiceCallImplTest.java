@@ -2,6 +2,8 @@ package gov.va.vetservices.partner.treatmentfacility.ws.client.remote;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.when;
 import static org.springframework.ws.test.client.RequestMatchers.payload;
 import static org.springframework.ws.test.client.ResponseCreators.withPayload;
 
@@ -11,8 +13,12 @@ import java.text.MessageFormat;
 import javax.xml.transform.Source;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoRule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.ClassPathResource;
@@ -59,6 +65,12 @@ public class RemoteServiceCallImplTest extends AbstractTreatmentFacilityTest {
 	@Qualifier("treatmentFacilityWsClientAxiomTemplate")
 	private WebServiceTemplate axiomWebServiceTemplate;
 
+	@Mock
+	private WebServiceTemplate axiomWebServiceTemplateMock;
+
+	@Rule
+	public MockitoRule mockitoRule = MockitoJUnit.rule();
+
 	@Before
 	public void setUp() {
 		assertNotNull("FAIL axiomWebServiceTemplate cannot be null.", axiomWebServiceTemplate);
@@ -73,16 +85,15 @@ public class RemoteServiceCallImplTest extends AbstractTreatmentFacilityTest {
 		// call the impl declared by the current @ActiveProfiles
 
 		final GetVAMedicalTreatmentFacilityList request = makeRequest(TEST_VALID_CODE);
-		final Source requestPayload = marshalMockRequest((Jaxb2Marshaller) axiomWebServiceTemplate.getMarshaller(), request,
-				request.getClass());
+		final Source requestPayload =
+				marshalMockRequest((Jaxb2Marshaller) axiomWebServiceTemplate.getMarshaller(), request, request.getClass());
 		final Source responsePayload = readMockResponseByKey(request.getStateCd());
 
 		mockWebServicesServer.expect(payload(requestPayload)).andRespond(withPayload(responsePayload));
 
 		/* attempt to call partner will ALWAYS fail - test for specific exception classes */
 		try {
-			callPartnerService
-					.callRemoteService(axiomWebServiceTemplate, request, GetVAMedicalTreatmentFacilityList.class);
+			callPartnerService.callRemoteService(axiomWebServiceTemplate, request, GetVAMedicalTreatmentFacilityList.class);
 
 			mockWebServicesServer.verify();
 
@@ -90,6 +101,22 @@ public class RemoteServiceCallImplTest extends AbstractTreatmentFacilityTest {
 			e.printStackTrace();
 
 			fail("FAIL mockWebServicesServer did not function as expected");
+		}
+	}
+
+	@Test
+	public void testCallRemoteServiceExceptionHandling() {
+		final GetVAMedicalTreatmentFacilityList request = makeRequest(TEST_VALID_CODE);
+
+		when(axiomWebServiceTemplateMock.marshalSendAndReceive(any(PartnerTransferObjectMarker.class)))
+				.thenThrow(new RuntimeException());
+
+		try {
+			callPartnerService.callRemoteService(axiomWebServiceTemplateMock, request, GetVAMedicalTreatmentFacilityList.class);
+
+		} catch (final Throwable e) {
+			e.printStackTrace();
+			assertNotNull(e);
 		}
 	}
 
@@ -124,8 +151,8 @@ public class RemoteServiceCallImplTest extends AbstractTreatmentFacilityTest {
 					new ClassPathResource(MessageFormat.format(AbstractRemoteServiceCallMock.MOCK_FILENAME_TEMPLATE, keyPath)));
 		} catch (final IOException e) {
 			throw new TreatmentFacilityWsClientException("Could not read mock XML file '"
-					+ MessageFormat.format(AbstractRemoteServiceCallMock.MOCK_FILENAME_TEMPLATE, keyPath)
-					+ "' using key '" + keyPath + "'. Please make sure this response file exists in the main/resources directory.", e);
+					+ MessageFormat.format(AbstractRemoteServiceCallMock.MOCK_FILENAME_TEMPLATE, keyPath) + "' using key '" + keyPath
+					+ "'. Please make sure this response file exists in the main/resources directory.", e);
 		}
 		return resource;
 	}
