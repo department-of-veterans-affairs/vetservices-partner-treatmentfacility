@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.ws.client.core.WebServiceTemplate;
@@ -39,6 +40,23 @@ public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 			"gov.va.vetservices.partner.treatmentfacility.ws.client.TreatmentFacilityWsClientException";
 
 	// ####### for test, member values are from src/test/resource/application.yml ######
+
+	/** Location of the truststore containing the treatmentfacility cert */
+	@Value("${vetservices-partner-treatmentfacility.ws.client.ssl.keystore:src/test/resources/ssl/dev/vaebnweb1Keystore.jks}")
+	private String keystore;
+
+	/** Password for the treatmentfacility cert */
+	@Value("${vetservices-partner-treatmentfacility.ws.client.ssl.keystorePass:password}")
+	private String keystorePass;
+
+	/** Location of the truststore containing the treatmentfacility cert */
+	@Value("${vetservices-partner-treatmentfacility.ws.client.ssl.truststore:src/test/resources/ssl/dev/vaebnTruststore.jks}")
+	private String truststore;
+
+	/** Password for the treatmentfacility cert */
+	@Value("${vetservices-partner-treatmentfacility.ws.client.ssl.truststorePass:password}")
+	private String truststorePass;
+
 	/** Decides if jaxb validation logs errors. */
 	@Value("${vetservices-partner-treatmentfacility.ws.client.logValidation:true}")
 	public boolean logValidation;
@@ -99,8 +117,9 @@ public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 
 		Defense.hasText(endpoint, "TreatmentFacilityWsClientAxiomTemplate endpoint cannot be empty.");
 
-		return createDefaultWebServiceTemplate(endpoint, readTimeout, connectionTimeout, treatmentFacilityMarshaller(),
-				treatmentFacilityMarshaller(), new ClientInterceptor[] { treatmentFacilitySecurityInterceptor() });
+		return createSslWebServiceTemplate(endpoint, readTimeout, connectionTimeout, treatmentFacilityMarshaller(),
+				treatmentFacilityMarshaller(), new ClientInterceptor[] { treatmentFacilitySecurityInterceptor() },
+				new FileSystemResource(keystore), keystorePass, new FileSystemResource(truststore), truststorePass);
 	}
 
 	/**
