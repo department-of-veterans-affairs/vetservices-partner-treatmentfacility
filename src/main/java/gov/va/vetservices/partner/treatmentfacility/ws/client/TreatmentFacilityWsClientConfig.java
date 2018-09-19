@@ -78,6 +78,10 @@ public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 	 */
 	@PostConstruct
 	public final void postConstruct() {
+		Defense.hasText(keystore, "Partner keystore cannot be empty.");
+		Defense.hasText(keystorePass, "Partner keystorePass cannot be empty.");
+		Defense.hasText(truststore, "Partner truststore cannot be empty.");
+		Defense.hasText(truststorePass, "Partner truststorePass cannot be empty.");
 		Defense.hasText(username, "Partner username cannot be empty.");
 		Defense.hasText(password, "Partner password cannot be empty.");
 		Defense.hasText(vaApplicationName, "Partner vaApplicationName cannot be empty.");
