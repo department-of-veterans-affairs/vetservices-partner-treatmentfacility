@@ -12,6 +12,7 @@ vetservices-partner-treatmentfacility.ws.client.endpoint: http://localhost:9746/
 vetservices-partner-treatmentfacility.ws.client.username: unitTestUsername
 vetservices-partner-treatmentfacility.ws.client.password: unitTestPassword
 vetservices-partner-treatmentfacility.ws.client.vaApplicationName: unitTestAppName
+bgs.stationId: unitTestStationId
 
 vetservices-partner-treatmentfacility.ws.client.logValidation: true
 vetservices-partner-treatmentfacility.ws.client.readTimeout: 60000

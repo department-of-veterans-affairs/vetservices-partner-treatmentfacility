@@ -72,6 +72,10 @@ public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 	/** VA Application Name Header value. */
 	@Value("${vetservices-partner-treatmentfacility.ws.client.vaApplicationName}")
 	private String vaApplicationName;
+	
+	/** VA STN_ID value. */
+	@Value("${bgs.stationId}")
+	private String stationId;
 
 	/**
 	 * Executed after dependency injection is done to validate initialization.
@@ -85,6 +89,7 @@ public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 		Defense.hasText(username, "Partner username cannot be empty.");
 		Defense.hasText(password, "Partner password cannot be empty.");
 		Defense.hasText(vaApplicationName, "Partner vaApplicationName cannot be empty.");
+		Defense.hasText(stationId, "Partner stationId cannot be empty.");
 	}
 
 	/**
@@ -136,7 +141,7 @@ public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 	@Bean
 	Wss4jSecurityInterceptor treatmentFacilitySecurityInterceptor() {
 		// CHECKSTYLE:ON
-		return getVAServiceWss4jSecurityInterceptor(username, password, vaApplicationName, null);
+		return getVAServiceWss4jSecurityInterceptor(username, password, vaApplicationName, stationId);
 	}
 
 	/**
