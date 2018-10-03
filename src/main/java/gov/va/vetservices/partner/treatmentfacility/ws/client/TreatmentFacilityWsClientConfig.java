@@ -194,7 +194,7 @@ public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 	// Ignoring DesignForExtension check, we cannot make this spring bean method private or final
 	// CHECKSTYLE:OFF
 	@Bean
-	RemoteServiceCallInterceptor treatmentFacilityWsClientRemoteServiceCallInterceptor() throws ClassNotFoundException {
+	RemoteServiceCallInterceptor treatmentFacilityWsClientRemoteServiceCallInterceptor() {
 		// CHECKSTYLE:ON
 		return getRemoteServiceCallInterceptor();
 	}
