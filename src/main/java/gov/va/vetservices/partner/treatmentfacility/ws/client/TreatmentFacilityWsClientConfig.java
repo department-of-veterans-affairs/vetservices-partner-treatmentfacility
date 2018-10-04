@@ -20,12 +20,14 @@ import gov.va.ascent.framework.exception.InterceptingExceptionTranslator;
 import gov.va.ascent.framework.log.PerformanceLogMethodInterceptor;
 import gov.va.ascent.framework.util.Defense;
 import gov.va.ascent.framework.ws.client.BaseWsClientConfig;
+import gov.va.ascent.framework.ws.client.remote.RemoteServiceCallInterceptor;
 
 /**
  * This class represents the Spring configuration for the Web Service Client.
  */
 @Configuration
-@ComponentScan(basePackages = { "gov.va.vetservices.partner.treatmentfacility.ws.client" },
+@ComponentScan(basePackages = { "gov.va.vetservices.partner.treatmentfacility.ws.client", "gov.va.ascent.framework.ws.client",
+		 "gov.va.ascent.framework.audit" },
 		excludeFilters = @Filter(Configuration.class))
 public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 
@@ -179,6 +181,23 @@ public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 		// CHECKSTYLE:ON
 		return getInterceptingExceptionTranslator(DEFAULT_EXCEPTION_CLASS, PACKAGE_ASCENT_FRAMEWORK_EXCEPTION);
 	}
+	
+	/**
+	 * RemoteServiceCallInterceptor for the Web Service Client
+	 *
+	 * Handles runtime exceptions raised by the web service client through runtime
+	 * operation and communication with the remote service.
+	 *
+	 * @return the RemoteServiceCallInterceptor
+	 * @throws ClassNotFoundException the class not found exception
+	 */
+	// Ignoring DesignForExtension check, we cannot make this spring bean method private or final
+	// CHECKSTYLE:OFF
+	@Bean
+	RemoteServiceCallInterceptor treatmentFacilityWsClientRemoteServiceCallInterceptor() {
+		// CHECKSTYLE:ON
+		return getRemoteServiceCallInterceptor();
+	}
 
 	/**
 	 * A standard bean proxy to apply interceptors to the web service client.
@@ -191,6 +210,7 @@ public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 	BeanNameAutoProxyCreator treatmentFacilityWsClientBeanProxy() {
 		// CHECKSTYLE:ON
 		return getBeanNameAutoProxyCreator(new String[] { TreatmentFacilityWsClientImpl.BEAN_NAME }, new String[] {
-				"treatmentFacilityWsClientExceptionInterceptor", "treatmentFacilityWsClientPerformanceLogMethodInterceptor" });
+				"treatmentFacilityWsClientExceptionInterceptor", "treatmentFacilityWsClientPerformanceLogMethodInterceptor",
+				"treatmentFacilityWsClientRemoteServiceCallInterceptor"});
 	}
 }
