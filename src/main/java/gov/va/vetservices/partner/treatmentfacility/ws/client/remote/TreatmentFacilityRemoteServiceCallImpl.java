@@ -1,13 +1,13 @@
 package gov.va.vetservices.partner.treatmentfacility.ws.client.remote;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.ws.client.core.WebServiceTemplate;
 
 import gov.va.ascent.framework.config.AscentCommonSpringProfiles;
+import gov.va.ascent.framework.log.AscentLogger;
+import gov.va.ascent.framework.log.AscentLoggerFactory;
 import gov.va.ascent.framework.transfer.PartnerTransferObjectMarker;
 import gov.va.ascent.framework.ws.client.remote.RemoteServiceCall;
 
@@ -17,7 +17,7 @@ import gov.va.ascent.framework.ws.client.remote.RemoteServiceCall;
 @Profile(AscentCommonSpringProfiles.PROFILE_REMOTE_CLIENT_IMPLS)
 @Component(TreatmentFacilityRemoteServiceCallImpl.BEAN_NAME)
 public class TreatmentFacilityRemoteServiceCallImpl implements RemoteServiceCall {
-	private static final Logger LOGGER = LoggerFactory.getLogger(TreatmentFacilityRemoteServiceCallImpl.class);
+	private static final AscentLogger LOGGER = AscentLoggerFactory.getLogger(TreatmentFacilityRemoteServiceCallImpl.class);
 
 	/** The spring bean name for implementation. MUST BE UNIQUE ACROSS ALL PARTNER JARS */
 	public static final String BEAN_NAME = "treatmentFacilityRemoteServiceCall";
