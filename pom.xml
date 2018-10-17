@@ -35,7 +35,7 @@
 		<dependency>
 			<groupId>gov.va.ascent</groupId>
 			<artifactId>ascent-framework</artifactId>
-			<version>0.0.10</version>
+			<version>0.0.11-SNAPSHOT</version>
 		</dependency>
 
 		<!-- Apache Commons project dependencies -->
