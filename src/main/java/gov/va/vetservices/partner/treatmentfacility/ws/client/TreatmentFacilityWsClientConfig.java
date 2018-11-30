@@ -128,13 +128,16 @@ public class TreatmentFacilityWsClientConfig extends BaseWsClientConfig {
 
 		Defense.hasText(endpoint, "TreatmentFacilityWsClientAxiomTemplate endpoint cannot be empty.");
 
-		LogHttpCallInterceptor logHttpCallInterceptor = new LogHttpCallInterceptor();
+		LogHttpCallInterceptor logHttpCallInterceptorBeforeEncryption = new LogHttpCallInterceptor("Raw message");
+		LogHttpCallInterceptor logHttpCallInterceptorAfterEncryption = new LogHttpCallInterceptor("Wire log message");
 
 		return createSslWebServiceTemplate(endpoint, readTimeout, connectionTimeout, treatmentFacilityMarshaller(),
-				// logHttpCallInterceptor has to be the last element in the array, since it needs to log the message once all
-				// interceptors are done doing their job, so as to log the complete message just before it is being sent
+				// logHttpCallInterceptorAfterEncryption has to be the last element in the array, since it needs to log the
+				// message once all interceptors are done doing their job, so as to log the complete message just before it is
+				// being sent
 				treatmentFacilityMarshaller(),
-				new ClientInterceptor[] { treatmentFacilitySecurityInterceptor(), logHttpCallInterceptor },
+				new ClientInterceptor[] { logHttpCallInterceptorBeforeEncryption, treatmentFacilitySecurityInterceptor(),
+						logHttpCallInterceptorAfterEncryption },
 				new FileSystemResource(keystore), keystorePass, new FileSystemResource(truststore), truststorePass);
 	}
 
