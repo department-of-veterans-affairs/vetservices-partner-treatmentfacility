@@ -1,0 +1,22 @@
+<!-- S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+   <S:Body -->
+      <ns2:getVAMedicalTreatmentFacilityListResponse xmlns:ns2="http://gov.va.vba.benefits.vdc/services" xmlns:ns3="http://gov.va.vba.benefits.vdc/data" xmlns:ns4="http://gov.va.vba.benefits.vdc/webfault">
+         <ns3:MedicalTreatmentFacilityListReturn>
+            <MedicalTreatmentFacilityList>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BALTIMORE</cityNm>
+                  <facilityNm>BALTIMORE VAMC - VA MARYLAND HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>MD</postalCd>
+                  <ptcpntId>12965788</ptcpntId>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>PERRY POINT</cityNm>
+                  <facilityNm>PERRY POINT VAMC - VA MARYLAND HEALTH CARE SYSTEM</facilityNm>
+                  <postalCd>MD</postalCd>
+                  <ptcpntId>12965789</ptcpntId>
+               </ns3:MedicalTreatmentFacility>
+            </MedicalTreatmentFacilityList>
+         </ns3:MedicalTreatmentFacilityListReturn>
+      </ns2:getVAMedicalTreatmentFacilityListResponse>
+   <!-- /S:Body>
+</S:Envelope -->
