@@ -1,0 +1,82 @@
+<!-- S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+   <S:Body -->
+      <ns2:getVAMedicalTreatmentFacilityListResponse xmlns:ns2="http://gov.va.vba.benefits.vdc/services" xmlns:ns3="http://gov.va.vba.benefits.vdc/data" xmlns:ns4="http://gov.va.vba.benefits.vdc/webfault">
+         <ns3:MedicalTreatmentFacilityListReturn>
+            <MedicalTreatmentFacilityList>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>ALBANY</cityNm>
+                  <facilityNm>ALBANY VA MEDICAL CENTER: SAMUEL S. STRATTON</facilityNm>
+                  <postalCd>NY</postalCd>
+                  <ptcpntId>12965815</ptcpntId>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BATAVIA</cityNm>
+                  <facilityNm>VA WESTERN NEW YORK HEALTHCARE SYSTEM AT BATAVIA</facilityNm>
+                  <postalCd>NY</postalCd>
+                  <ptcpntId>12965816</ptcpntId>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BATH</cityNm>
+                  <facilityNm>BATH VA MEDICAL CENTER</facilityNm>
+                  <postalCd>NY</postalCd>
+                  <ptcpntId>12965817</ptcpntId>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BRONX</cityNm>
+                  <facilityNm>BRONX VA MEDICAL CENTER</facilityNm>
+                  <postalCd>NY</postalCd>
+                  <ptcpntId>12965818</ptcpntId>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BROOKLYN</cityNm>
+                  <facilityNm>BROOKLYN CAMPUS VA NY HARBOR HCS</facilityNm>
+                  <postalCd>NY</postalCd>
+                  <ptcpntId>12965819</ptcpntId>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>BUFFALO</cityNm>
+                  <facilityNm>VA WESTERN NEW YORK HEALTHCARE SYSTEM AT BUFFALO</facilityNm>
+                  <postalCd>NY</postalCd>
+                  <ptcpntId>12965820</ptcpntId>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>CANANDAIGUA</cityNm>
+                  <facilityNm>CANANDAIGUA VA MEDICAL CENTER</facilityNm>
+                  <postalCd>NY</postalCd>
+                  <ptcpntId>12965821</ptcpntId>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>CASTLE POINT</cityNm>
+                  <facilityNm>CASTLE POINT CAMPUS VA HUDSON VALLEY HCS</facilityNm>
+                  <postalCd>NY</postalCd>
+                  <ptcpntId>12965822</ptcpntId>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>MONTROSE</cityNm>
+                  <facilityNm>FRANKLIN D. ROOSEVELT CAMPUS VA HUDSON VALLEY HCS</facilityNm>
+                  <postalCd>NY</postalCd>
+                  <ptcpntId>12965823</ptcpntId>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>NEW YORK</cityNm>
+                  <facilityNm>NEW YORK CAMPUS VA NY HARBOR HEALTHCARE SYSTEM</facilityNm>
+                  <postalCd>NY</postalCd>
+                  <ptcpntId>12965824</ptcpntId>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>NORTHPORT</cityNm>
+                  <facilityNm>NORTHPORT VA MEDICAL CENTER</facilityNm>
+                  <postalCd>NY</postalCd>
+                  <ptcpntId>12965825</ptcpntId>
+               </ns3:MedicalTreatmentFacility>
+               <ns3:MedicalTreatmentFacility>
+                  <cityNm>SYRACUSE</cityNm>
+                  <facilityNm>SYRACUSE VA MEDICAL CENTER</facilityNm>
+                  <postalCd>NY</postalCd>
+                  <ptcpntId>12965826</ptcpntId>
+               </ns3:MedicalTreatmentFacility>
+               </MedicalTreatmentFacilityList> 
+              </ns3:MedicalTreatmentFacilityListReturn>
+      </ns2:getVAMedicalTreatmentFacilityListResponse>
+   <!-- /S:Body>
+</S:Envelope -->
